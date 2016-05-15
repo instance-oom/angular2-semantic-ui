@@ -6,3 +6,4 @@ Programing...
 # Current Included Components
 - <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/dimmer">Dimmer</a>
 - <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/dropdown">Dropdown</a>
+- <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/loader">Loader</a>
