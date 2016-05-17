@@ -30,4 +30,4 @@
 - label: 可选，标签（显示在porgress下方）
 
 # Tips
-可以通过 `l-progress` 控件上的class设置progress的 `color`、`size` 等，具体值参见<a href="http://semantic-ui.com/modules/progress.html">Semantic-UI Progress</a>
+可以通过 `l-progress` 控件上的class设置progress的 `color`、`size` 等，具体值参见<a href="http://semantic-ui.com/modules/progress.html" target="_blank">Semantic-UI Progress</a>
