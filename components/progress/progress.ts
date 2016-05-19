@@ -1,9 +1,9 @@
-import { Component, Input, ElementRef } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: "l-progress",
   template: `
-    <div class="ui progress" [ngClass]="getCls()">
+    <div class="ui {{ color }} {{ size }} progress">
       <div class="bar" style="transition-duration: 300ms;" [style.width]="getPercent()">
         <div class="progress">{{ text || getPercent() }}</div>
       </div>
@@ -22,17 +22,13 @@ export class ProgressComponent {
   @Input()
   public percent: number;
 
-  private currentEle: any;
-  constructor(ele: ElementRef) {
-    this.currentEle = ele.nativeElement;
-  }
+  @Input()
+  public color: string;
 
-  getCls(): Array<string> {
-    var cls = this.currentEle.classList;
-    if (this.percent >= 100) {
-      cls.add('success');
-    }
-    return cls;
+  @Input()
+  public size: string;
+
+  constructor() {
   }
 
   getPercent(): string {
