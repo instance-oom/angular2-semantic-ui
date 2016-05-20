@@ -1,4 +1,4 @@
-# Loader Usage
+# Modal Usage
 
 ```html
   <modal [showModal]="showModal" [options]="modalOptions">
