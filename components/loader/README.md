@@ -1,30 +1,9 @@
 # Loader Usage
 
-```typescript
-  @Component({
-    selector: "app",
-    directives: [LoaderComponent],
-    template: `
-      <div (click)="toggleLoader()">
-        <loader [active]="active" [loaderText]="loaderText" [loaderSize]="loaderSize"></loader>
-      </div>
-      `
-  })
-
-  class AppComponent {
-    private active: boolean;
-    private loaderText: string;
-    private loaderSize: string;
-    constructor() {
-      this.active = false;
-      this.loaderText = "Login...";
-      this.loaderSize = "large"; 
-    }
-
-    toggleLoader() {
-      this.active = !this.active;
-    }
-  }
+```html
+  <div (click)="toggleLoader()">
+    <loader [active]="active" [loaderText]="loaderText" [loaderSize]="loaderSize"></loader>
+  </div>
 ```
 
 # Options

@@ -9,3 +9,4 @@ Programing...
 - <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/loader">Loader</a>
 - <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/progress">Progress</a>
 - <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/rating">Rating</a>
+- <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/modal">Modal</a>
