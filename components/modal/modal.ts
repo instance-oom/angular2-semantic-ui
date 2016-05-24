@@ -3,7 +3,7 @@ import { Component, Input, ElementRef } from '@angular/core';
 @Component({
   selector: 'modal',
   template: `
-    <div class="ui {{size}} {{type}} modal">
+    <div class="ui {{options.size || ""}} {{options.type || ""}} modal">
       <ng-content></ng-content>
     </div>
   `
@@ -24,12 +24,6 @@ export class ModalComponent {
       }
     }
   }
-
-  @Input()
-  public size: string;
-
-  @Input()
-  public type: string;
 
   private _showModal: boolean;
   private elf: any;

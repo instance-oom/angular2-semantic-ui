@@ -8,8 +8,8 @@ import { ControlValueAccessor, NgModel } from '@angular/common';
     <div class="ui selection dropdown" (click)="toggleSelectPanel()">
       <i class="dropdown icon"></i>
       <div class="default text">{{ selectedItem[textField] || selectedItem }}</div>
-      <div class="menu transition hidden" [ngClass]="itemsCls">
-        <div class="item" (click)="itemClick(item)" *ngFor="let item of data;">{{ item[textField] || item }}</div>
+      <div class="menu transition hidden" [ngClass]="itemsCls" style="z-index: 1000">
+        <div class="item" (click)="itemClick(item)" *ngFor="let item of data;" style="z-index: 1000">{{ item[textField] || item }}</div>
       </div>
     </div>
   `
@@ -48,6 +48,12 @@ export class DropdownComponent implements ControlValueAccessor {
 
   public registerOnTouched(fn: () => {}): void {
     this.onTouched = fn;
+  }
+
+  public ngOnInit(): void {
+    if (!this.selectedItem) {
+      this.selectedItem = this.data[0];
+    }
   }
 
   toggleSelectPanel() {

@@ -27,6 +27,8 @@
   </modal>
   
   modalOptions = {
+    "size": "small",  //modal尺寸[ small | large | fullscreen]
+    "type": "basic",  //modal类型[ basic ], 默认为空
     "closeable": true,
     "onApprove": (e) => {
       console.log(e);
@@ -42,5 +44,3 @@
 # Options
 - showModal: 必选，控制Loader显隐
 - modalOptions: 可选，Modal配置 <a href="http://semantic-ui.com/modules/modal.html#/settings">Semantic-ui Modal Setting</a>
-- size: 可选，modal尺寸[ small | large | fullscreen]
-- type: 可选，modal类型[ basic ], 默认为空
