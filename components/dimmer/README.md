@@ -3,9 +3,9 @@
 ```html
   <div style="width:100%; height: 200px">
     Dimmer Demo
-    <dimmer [active]="activeDimmer">
+    <lsu-dimmer [active]="activeDimmer">
       <h2>Dimmer Test</h2>
-    </dimmer>      
+    </lsu-dimmer>      
   </div>
 ```
 

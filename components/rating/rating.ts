@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ControlValueAccessor, NgModel } from '@angular/common';
 
 @Component({
-  selector: 'rating[ngModel]',
+  selector: 'lsu-rating[ngModel]',
   template: `
     <div class="ui {{ type }} {{ size }} rating">
       <i class="icon" *ngFor="let item of ratings" [ngClass]="{'active': item <= rating }" (click)="setRating(item)"></i>

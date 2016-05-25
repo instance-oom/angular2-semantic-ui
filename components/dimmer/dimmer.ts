@@ -1,7 +1,7 @@
 import { Component, Input, ElementRef } from '@angular/core'
 
 @Component({
-  selector: 'dimmer',
+  selector: 'lsu-dimmer',
   template: `
     <div class="ui dimmer" [ngClass]="dimmerCls">
       <div class="content">

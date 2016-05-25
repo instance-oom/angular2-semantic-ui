@@ -1,7 +1,7 @@
 import { Component, Input, ElementRef } from '@angular/core'
 
 @Component({
-  selector: "loader",
+  selector: "lsu-loader",
   template: `
     <div class="ui dimmer" [ngClass]="{'active': isActive}">
       <div class="ui {{loaderSize}} text loader">{{ loaderText }}</div>

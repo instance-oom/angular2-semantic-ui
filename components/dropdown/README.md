@@ -1,8 +1,8 @@
 # Dropdown Usage
 
 ```html
-  <dropdown [(ngModel)]="selectedItem" [data]="data"></dropdown>
-  <dropdown [(ngModel)]="selectedItem" [data]="data" [textField]="fieldForShow"></dropdown>
+  <lsu-dropdown [(ngModel)]="selectedItem" [data]="data"></lsu-dropdown>
+  <lsu-dropdown [(ngModel)]="selectedItem" [data]="data" [textField]="fieldForShow"></lsu-dropdown>
 ```
 
 # Options

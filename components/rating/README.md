@@ -1,6 +1,6 @@
 # Rating Usage
-```typescript
-  <rating [(ngModel)]="rating" [maxRating]="'10'" [type]="'heart'" [size]="'huge'"></rating>
+```html
+  <lsu-rating [(ngModel)]="rating" [maxRating]="'10'" [type]="'heart'" [size]="'huge'"></lsu-rating>
 ```
 
 # Options

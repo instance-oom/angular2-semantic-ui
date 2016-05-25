@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ControlValueAccessor, NgModel } from '@angular/common';
 
 @Component({
-  selector: 'dropdown',
+  selector: 'lsu-dropdown',
   styles: [`.active{ display:block !important; }`],
   template: `
     <div class="ui selection dropdown" (click)="toggleSelectPanel()">

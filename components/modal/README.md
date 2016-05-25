@@ -1,7 +1,7 @@
 # Modal Usage
 
 ```html
-  <modal [showModal]="showModal" [options]="modalOptions">
+  <lsu-modal [showModal]="showModal" [options]="modalOptions">
     <div class="header">
       Profile Picture
     </div>
@@ -24,7 +24,7 @@
         <i class="checkmark icon"></i>
       </div>
     </div>
-  </modal>
+  </lsu-modal>
   
   modalOptions = {
     "size": "small",  //modal尺寸[ small | large | fullscreen]

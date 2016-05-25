@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: "l-progress",
+  selector: "lsu-progress",
   template: `
     <div class="ui {{ color }} {{ size }} progress">
       <div class="bar" style="transition-duration: 300ms;" [style.width]="getPercent()">

@@ -2,7 +2,7 @@
 
 ```html
   <div (click)="toggleLoader()">
-    <loader [active]="active" [loaderText]="loaderText" [loaderSize]="loaderSize"></loader>
+    <lsu-loader [active]="active" [loaderText]="loaderText" [loaderSize]="loaderSize"></lsu-loader>
   </div>
 ```
 

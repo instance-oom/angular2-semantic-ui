@@ -1,7 +1,6 @@
 # Progress Usage
-由于progress标签属于html自带标签，所以此控件加入了前缀 `<l-progress></l-progress>`
 ```html
-  <l-progress [label]="'Uploading file'" [percent]="percent" [text]="''" [color]="'teal'" [size]="'standard'"></l-progress>
+  <lsu-progress [label]="'Uploading file'" [percent]="percent" [text]="''" [color]="'teal'" [size]="'standard'"></lsu-progress>
 ```
 
 # Options
