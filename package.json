@@ -1,14 +1,13 @@
 {
   "name": "angular2-semantic-ui",
-  "version": "1.2.0",
+  "version": "1.1.0",
   "description": "Angular2 Directives for Semantic UI",
   "main": "index.js",
   "scripts": {
     "start": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "lite": "lite-server",
-    "typings": "typings"
+    "lite": "lite-server"
   },
   "repository": {
     "type": "git",
@@ -29,11 +28,8 @@
     "@angular/common": "2.0.0-rc.0",
     "@angular/compiler": "2.0.0-rc.0",
     "@angular/core": "2.0.0-rc.0",
-    "@angular/http": "2.0.0-rc.0",
     "@angular/platform-browser": "2.0.0-rc.0",
     "@angular/platform-browser-dynamic": "2.0.0-rc.0",
-    "@angular/router-deprecated": "2.0.0-rc.0",
-    "@angular/upgrade": "2.0.0-rc.0",
     "systemjs": "0.19.27",
     "es6-shim": "^0.35.0",
     "reflect-metadata": "^0.1.3",

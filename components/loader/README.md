@@ -1,5 +1,8 @@
 # Loader Usage
 
+```typesctript
+  import { LOADER_DIRECTIVES } from 'angular2-semantic-ui/components'
+```
 ```html
   <div (click)="toggleLoader()">
     <lsu-loader [active]="active" [loaderText]="loaderText" [loaderSize]="loaderSize"></lsu-loader>
