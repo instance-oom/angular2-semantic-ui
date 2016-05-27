@@ -13,3 +13,13 @@ export * from './components/loader';
 export * from './components/modal';
 export * from './components/progress';
 export * from './components/rating';
+
+export const SEMANTIC_UI_COMPONENTS: Array<any> = [
+  CHECKBOX_DIRECTIVES,
+  DIMMER_DIRECTIVES,
+  DROPDOWN_DIRECTIVES,
+  LOADER_DIRECTIVES,
+  MODAL_DIRECTIVES,
+  PROGRESS_DIRECTIVES,
+  RATING_DIRECTIVES
+]

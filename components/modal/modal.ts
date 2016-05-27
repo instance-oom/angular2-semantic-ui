@@ -3,7 +3,7 @@ import { Component, Input, ElementRef } from '@angular/core';
 @Component({
   selector: 'lsu-modal',
   template: `
-    <div class="ui {{options.size || ""}} {{options.type || ""}} modal">
+    <div class="ui {{options.size || ''}} {{options.type || ''}} modal">
       <ng-content></ng-content>
     </div>
   `

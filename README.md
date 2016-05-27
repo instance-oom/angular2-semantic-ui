@@ -5,6 +5,14 @@ Angular2 Components for <a href="http://semantic-ui.com/">Semantic UI</a>
 ```
 npm install angular2-semantic-ui --save
 
+import { SEMANTIC_UI_COMPONENTS } from 'angular2-semantic-ui/components';
+```
+
+#Run Demo
+```
+cd demo
+npm install
+npm start
 ```
 
 # Current Included Components

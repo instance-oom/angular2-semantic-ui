@@ -52,7 +52,7 @@ export class DropdownComponent implements ControlValueAccessor {
 
   public ngOnInit(): void {
     if (!this.selectedItem) {
-      this.selectedItem = this.data[0];
+      this.itemClick(this.data[0]);
     }
   }
 
