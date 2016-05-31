@@ -1,11 +1,11 @@
-import { Component, AfterContentInit, ContentChildren, Input } from '@angular/core';
+import { Component, AfterContentInit, ContentChildren, QueryList, Input } from '@angular/core';
 import { TabComponent } from './tab';
 
 @Component({
   selector: "lsu-tabset",
   template: `
     <div class="ui top attached tabular menu">
-      <a class="item" *ngFor="let tab of tabs" [ngClass]="{'active': tab.active}" (click)="setTab(tab)">
+      <a class="item" *ngFor="let tab of _tabs" [ngClass]="{'active': tab.active}" (click)="setTab(tab)">
         {{ tab.headerText }}
       </a>            
     </div>
@@ -15,10 +15,10 @@ import { TabComponent } from './tab';
 
 export class TabSetComponent implements AfterContentInit {
   @ContentChildren(TabComponent)
-  private tabs: Array<TabComponent> = [];
+  public tabs: QueryList<TabComponent>;
 
+  private _tabs: Array<TabComponent> = [];
   constructor() {
-
   }
 
   setTab(tab: TabComponent): void {
@@ -27,9 +27,17 @@ export class TabSetComponent implements AfterContentInit {
   }
 
   ngAfterContentInit(): void {
-    if (this.tabs.length == 0) {
+    this._tabs = this.tabs.toArray();
+    if (this._tabs.length == 0) {
       throw new Error("Cannot no tab in tabset.");
     }
-    this.setTab(this.tabs[0]);
+    let finded = false;
+    for (var i = 0; i < this._tabs.length; i++) {
+      let tab = this._tabs[i];
+      if (tab.active) {
+        this.setTab(tab);
+        break;
+      }
+    }
   }
 }

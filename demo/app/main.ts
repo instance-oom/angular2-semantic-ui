@@ -56,6 +56,20 @@ import { SEMANTIC_UI_COMPONENTS } from 'angular2-semantic-ui/angular2-semantic-u
         </div>
       </lsu-modal>
       <button class="ui button" (click)="toggleModal()">Toggel Modal</button>
+      <div class="ui header">Tab</div>
+      <hr>
+      <lsu-tabset>
+        <lsu-tab [headerText]="'First'">
+          <h1>Tab First</h1>
+        </lsu-tab>
+        <lsu-tab [headerText]="'Second'" [active]="'true'">
+          <h1>Tab Second</h1>
+        </lsu-tab>
+        <lsu-tab [headerText]="'Third'" [active]="'true'">
+          <h1>Tab Third</h1>
+        </lsu-tab>
+      </lsu-tabset>
+      <hr>
     </div>
   `
 })
