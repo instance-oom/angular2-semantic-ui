@@ -27,7 +27,8 @@
     System.config({
         packages: {        
           "app": { defaultExtension: 'js' },
-          "angular2-semantic-ui":{ defaultExtension: 'js' },
+          "components": { defaultExtension: 'js' },
+          "angular2-semantic-ui": { defaultExtension: 'js' },
           "@angular/core": { main:'index.js', defaultExtension: 'js' },
           "@angular/platform-browser-dynamic": { main:'index.js', defaultExtension: 'js' },
           "@angular/platform-browser": { main:'index.js', defaultExtension: 'js' },
@@ -35,7 +36,9 @@
           "@angular/common": { main:'index.js', defaultExtension: 'js' },
         },
         map: {
-          "@angular": "node_modules/@angular"
+          "@angular": "node_modules/@angular",
+          "angular2-semantic-ui": ".",
+          "rxjs": "node_modules/rxjs"
         }
       });
       System.import('app/main').then(null, console.error.bind(console));
