@@ -5,6 +5,7 @@ import { LOADER_DIRECTIVES } from './components/loader';
 import { MODAL_DIRECTIVES } from './components/modal';
 import { PROGRESS_DIRECTIVES } from './components/progress';
 import { RATING_DIRECTIVES } from './components/rating';
+import { TAB_DIRECTIVES } from './components/tab';
 
 export * from './components/checkbox';
 export * from './components/dimmer';
@@ -13,6 +14,7 @@ export * from './components/loader';
 export * from './components/modal';
 export * from './components/progress';
 export * from './components/rating';
+export * from './components/tab';
 
 export const SEMANTIC_UI_COMPONENTS: Array<any> = [
   CHECKBOX_DIRECTIVES,
@@ -21,5 +23,6 @@ export const SEMANTIC_UI_COMPONENTS: Array<any> = [
   LOADER_DIRECTIVES,
   MODAL_DIRECTIVES,
   PROGRESS_DIRECTIVES,
-  RATING_DIRECTIVES
+  RATING_DIRECTIVES,
+  TAB_DIRECTIVES
 ]
