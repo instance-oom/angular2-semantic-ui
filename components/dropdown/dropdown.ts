@@ -5,11 +5,11 @@ import { ControlValueAccessor, NgModel } from '@angular/common';
   selector: 'lsu-dropdown',
   styles: [`.active{ display:block !important; }`],
   template: `
-    <div class="ui selection dropdown" (click)="toggleSelectPanel()">
+    <div class="ui fluid selection dropdown" [class.active]="active" [class.visible]="active" (click)="toggleSelectPanel()">
       <i class="dropdown icon"></i>
-      <div class="default text">{{ selectedItem[textField] || selectedItem }}</div>
-      <div class="menu transition hidden" [ngClass]="itemsCls" style="z-index: 1000">
-        <div class="item" (click)="itemClick(item)" *ngFor="let item of data;" style="z-index: 1000">{{ item[textField] || item }}</div>
+      <div class="text">{{ selectedItem[textField] || selectedItem }}</div>
+      <div class="menu transition hidden" [class.hidden]="!active" [class.visible]="active">
+        <div class="item" (click)="itemClick(item)" *ngFor="let item of data;">{{ item[textField] || item }}</div>
       </div>
     </div>
   `
@@ -23,7 +23,7 @@ export class DropdownComponent implements ControlValueAccessor {
   public textField: string;
 
   private selectedItem: any;
-  private itemsCls: any;
+  private active: boolean = false;
 
   private onChange: Function;
   private onTouched: Function;
@@ -32,10 +32,6 @@ export class DropdownComponent implements ControlValueAccessor {
   constructor(vm: NgModel) {
     this.vm = vm;
     vm.valueAccessor = this;
-    this.itemsCls = {
-      "hidden": true,
-      "active": false
-    }
   }
 
   public writeValue(value: any): void {
@@ -57,8 +53,7 @@ export class DropdownComponent implements ControlValueAccessor {
   }
 
   toggleSelectPanel() {
-    this.itemsCls.hidden = !this.itemsCls.hidden;
-    this.itemsCls.active = !this.itemsCls.active;
+    this.active = !this.active;
   }
 
   itemClick(item: any) {
