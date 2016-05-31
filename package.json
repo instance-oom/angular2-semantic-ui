@@ -4,10 +4,10 @@
   "description": "Angular2 Directives for Semantic UI",
   "main": "index.js",
   "scripts": {
-    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
+    "demo": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "lite": "lite-server"
+    "lite": "lite-server -c demo/lite-server.json"
   },
   "repository": {
     "type": "git",

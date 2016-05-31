@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { bootstrap } from "@angular/platform-browser-dynamic";
 
-import { SEMANTIC_UI_COMPONENTS } from 'angular2-semantic-ui/components';
+import { SEMANTIC_UI_COMPONENTS } from '../../angular2-semantic-ui';
 
 @Component({
   selector: "lsu-demo",

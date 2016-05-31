@@ -10,9 +10,8 @@ import { SEMANTIC_UI_COMPONENTS } from 'angular2-semantic-ui/components';
 
 #Run Demo
 ```
-cd demo
 npm install
-npm start
+npm run demo
 ```
 
 # Current Included Components
