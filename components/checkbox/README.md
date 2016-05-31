@@ -1,7 +1,7 @@
 # Dimmer Usage
 
 ```typesctript
-  import { CHECKBOX_DIRECTIVES } from 'angular2-semantic-ui/components'
+  import { CHECKBOX_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
 ```
 ```html
   <lsu-checkbox [(ngModel)]="isChecked" [disabled]="'false'" [readonly]="'true'" [label]="'CheckBox'" [type]="'slider'"></lsu-checkbox>

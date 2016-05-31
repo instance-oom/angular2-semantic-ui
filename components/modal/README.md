@@ -1,7 +1,7 @@
 # Modal Usage
 
 ```typesctript
-  import { MODAL_DIRECTIVES } from 'angular2-semantic-ui/components'
+  import { MODAL_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
 ```
 ```html
   <lsu-modal [showModal]="showModal" [options]="modalOptions">

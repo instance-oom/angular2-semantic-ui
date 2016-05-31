@@ -1,7 +1,7 @@
 # Dimmer Usage
 
 ```typesctript
-  import { DIMMER_DIRECTIVES } from 'angular2-semantic-ui/components'
+  import { DIMMER_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
 ```
 ```html
   <div style="width:100%; height: 200px">
