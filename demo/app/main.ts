@@ -33,8 +33,7 @@ import { SEMANTIC_UI_COMPONENTS } from '../../angular2-semantic-ui';
       <lsu-dropdown [(ngModel)]="selectedItem" [data]="dropdownData" [textField]="dropdownShowField"></lsu-dropdown>
       {{ selectedItem|json }}
       <div class="ui header">Modal</div>
-      <lsu-modal [showModal]="showModal" [options]="modalOptions">
-        <i class="close icon"></i>
+      <lsu-modal [(ngModel)]="showModal" [options]="modalOptions">
         <div class="header">
           Profile Picture
         </div>
@@ -55,7 +54,7 @@ import { SEMANTIC_UI_COMPONENTS } from '../../angular2-semantic-ui';
           </div>
         </div>
       </lsu-modal>
-      <button class="ui button" (click)="toggleModal()">Toggel Modal</button>
+      <button class="ui button" (click)="activeModal()">Active Modal</button>
       <div class="ui header">Tab</div>
       <hr>
       <lsu-tabset>
@@ -141,7 +140,7 @@ class LsuDemo {
 
     this.modalOptions = {
       "size": "small",
-      "type": "basic",
+      "type": "",
       "closeable": true,
       "onApprove": (e) => {
         return true;
@@ -171,8 +170,8 @@ class LsuDemo {
     this.isCheckBoxDisabled = !this.isCheckBoxDisabled;
   }
 
-  toggleModal(): void {
-    this.showModal = !this.showModal;
+  activeModal(): void {
+    this.showModal = true;
   }
 }
 
