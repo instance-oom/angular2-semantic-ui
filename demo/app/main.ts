@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { bootstrap } from "@angular/platform-browser-dynamic";
 
-import { SEMANTIC_UI_COMPONENTS } from 'angular2-semantic-ui/angular2-semantic-ui';
+import { SEMANTIC_UI_COMPONENTS } from '../../angular2-semantic-ui';
 
 @Component({
   selector: "lsu-demo",
-  directives: [ SEMANTIC_UI_COMPONENTS],
+  directives: [SEMANTIC_UI_COMPONENTS],
   template: `
-    <div class="ui container">
+    <div class="ui container" style="margin-bottom: 40px;">
       <div class="ui header">Dimmer</div>
       <div style="width:100%; height: 100px; border: 1px solid black;" (click)="toggleDimmer()">
         Dimmer Demo (click to show or hiden)
@@ -70,6 +70,18 @@ import { SEMANTIC_UI_COMPONENTS } from 'angular2-semantic-ui/angular2-semantic-u
         </lsu-tab>
       </lsu-tabset>
       <hr>
+      <div class="ui header">Accordion</div>
+      <lsu-accordion [option]="accordOption">
+        <lsu-accordionPanel [title]="'What is a dog?'">
+          <p>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
+        </lsu-accordionPanel>
+        <lsu-accordionPanel [title]="'What kinds of dogs are there?'" [active]="'true'">
+          <p>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+        </lsu-accordionPanel>
+        <lsu-accordionPanel [title]="'How do you acquire a dog?'">
+          <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
+        </lsu-accordionPanel>
+      </lsu-accordion>
     </div>
   `
 })
@@ -106,14 +118,9 @@ class LsuDemo {
   private showModal: boolean = false;
   private modalOptions: any;
 
+  private accordOption: any;
   constructor() {
-    var self = this;
-    self.progressTimmer = setInterval(function () {
-      self.progressPercent += parseInt(Math.random() * 20 + '');
-      if (self.progressPercent > 100) {
-        clearInterval(self.progressTimmer);
-      }
-    }, 500)
+    this.progressPercent = 67;
 
     for (var i = 0; i < 10; i++) {
       this.dropdownData.push({
@@ -127,13 +134,18 @@ class LsuDemo {
       "type": "basic",
       "closeable": true,
       "onApprove": (e) => {
-        console.log(e);
         return true;
       },
       "onDeny": (e) => {
-        console.log(e);
         return true;
       }
+    }
+    
+    this.accordOption = {
+      "styled": true,
+      "fluid": true,
+      "inverted": false,
+      "allowMultiple": false
     }
   }
 
