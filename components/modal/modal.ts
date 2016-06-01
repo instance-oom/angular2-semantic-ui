@@ -1,11 +1,24 @@
-import { Component, Input, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NgModel } from '@angular/common';
 
 @Component({
   selector: 'lsu-modal',
+  styles: [
+    ` .trans-fadeout{
+        -webkit-transition:all 0.3s linear;
+        -moz-transition:all 0.3s linear;
+        -ms-transition:all 0.3s linear;
+        -o-transition:all 0.3s linear;
+        transition:all 0.3s linear;
+      }
+    `
+  ],
   template: `
-    <div class="ui dimmer modals page transition" [ngClass]="{'active': _showModal, 'visible':_showModal, 'hidden': !_showModal}" (click)="closeModal()">
-      <div class="ui {{options.size || ''}} {{options.type || ''}} modal transition visible active" style="margin-top: -122.5px;" (click)="clickContent($event)">
+    <div class="ui dimmer modals page trans-fadeout" style="display: block !important" 
+      [style.visibility] = "_showModal ? 'visible' : 'hidden'"
+      [style.opacity] = "_showModal ? '1' : '0'"  
+      (click)="closeModal()">
+      <div id="{{id}}" class="ui {{options.size || ''}} {{options.type || ''}} modal active visibility" (click)="clickContent($event)">
         <ng-content></ng-content>    
       </div>
     </div>
@@ -16,10 +29,9 @@ export class ModalComponent implements ControlValueAccessor {
   @Input()
   public options: any = {};
 
-  @Output()
-  public onHide: EventEmitter<any> = new EventEmitter();
-
   private _showModal: boolean;
+  private element: any;
+  private id: string;
   private onChange: Function;
   private onTouched: Function;
   private vm: NgModel
@@ -27,15 +39,23 @@ export class ModalComponent implements ControlValueAccessor {
   constructor(vm: NgModel) {
     this.vm = vm;
     vm.valueAccessor = this;
+    this.id = `lsu_modal_${Math.random()}`
   }
 
   public writeValue(value: boolean): void {
+    this._showModal = value;
     if (value) {
       document.body.classList.add("dimmed");
+      var self = this;
+      setTimeout(function () {
+        let windowHeight = document.body.offsetHeight;
+        let eleHeight = self.element.offsetHeight;
+        let top = (windowHeight - eleHeight) / 2;
+        self.element.style.top = top + 'px';
+      });
     } else {
-      this.onHide.next(this);
+      document.body.classList.remove("dimmed");
     }
-    this._showModal = value;
   }
 
   public registerOnChange(fn: (_: any) => {}): void {
@@ -48,6 +68,7 @@ export class ModalComponent implements ControlValueAccessor {
 
   public ngAfterViewInit(): void {
     document.body.classList.add("dimmable");
+    this.element = document.getElementById(this.id);
   }
 
   private clickContent(event): void {
