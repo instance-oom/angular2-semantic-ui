@@ -1,6 +1,7 @@
 # angular2-semantic-ui
-Angular2 Components for <a href="http://semantic-ui.com/">Semantic UI</a>   
-##`No jQuery dependencies`
+Angular2 Components for <a href="http://semantic-ui.com/">Semantic UI</a>
+<br>
+`No jQuery Dependency`
 
 # Install
 ```
