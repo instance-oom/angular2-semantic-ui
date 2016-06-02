@@ -8,7 +8,7 @@ import { SEMANTIC_UI_COMPONENTS } from '../../angular2-semantic-ui';
   directives: [SEMANTIC_UI_COMPONENTS],
   template: `
     <div class="ui container" style="margin: 40px 0;">
-      <!--<div class="ui header">Dimmer</div>
+      <div class="ui header">Dimmer</div>
       <div style="width:100%; height: 100px; border: 1px solid black;" (click)="toggleDimmer()">
         Dimmer Demo (click to show or hiden)
         <lsu-dimmer [active]="activeDimmer">
@@ -96,11 +96,11 @@ import { SEMANTIC_UI_COMPONENTS } from '../../angular2-semantic-ui';
       </button>
       <div class="ui input">
         <input type="text" placeholder="Search..." lsu-popup [trigger]="'focus'" [content]="'Please input key word...'">
-      </div>-->
+      </div>
       
       <div class="ui header">Pagination</div>
       <div style="padding:5px 0;">
-        <lsu-pagination [disabled]="pagerDisabled" [totalPages]="5" [totalCount]="totalCount" [pageSize]="10" [currentPage]="2" [maxSize]="5" [options]="pageOptions" (onSelectPage)="onSelectPage($event)"></lsu-pagination>
+        <lsu-pagination [disabled]="pagerDisabled" [totalCount]="totalCount" [pageSize]="10" [currentPage]="2" [maxSize]="5" [options]="pageOptions" (onSelectPage)="onSelectPage($event)"></lsu-pagination>
       </div>
       <button class="ui button" type="button" (click)="setTotalCount()">Set Count</button>
       <button class="ui button" type="button" (click)="togglePagerDisable()">{{ pagerDisabled ? 'Enable':'Disable'}}</button>      
