@@ -8,6 +8,7 @@ import { RATING_DIRECTIVES } from './components/rating';
 import { TAB_DIRECTIVES } from './components/tab';
 import { ACCORDION_DIRECTIVES } from './components/accordion';
 import { POPUP_DIRECTIVES } from './components/popup';
+import { PAGINATION_DIRECTIVES } from './components/pagination';
 
 export * from './components/checkbox';
 export * from './components/dimmer';
@@ -19,6 +20,7 @@ export * from './components/rating';
 export * from './components/tab';
 export * from './components/accordion';
 export * from './components/popup';
+export * from './components/pagination';
 
 export const SEMANTIC_UI_COMPONENTS: Array<any> = [
   CHECKBOX_DIRECTIVES,
@@ -30,5 +32,6 @@ export const SEMANTIC_UI_COMPONENTS: Array<any> = [
   RATING_DIRECTIVES,
   TAB_DIRECTIVES,
   ACCORDION_DIRECTIVES,
-  POPUP_DIRECTIVES
+  POPUP_DIRECTIVES,
+  PAGINATION_DIRECTIVES
 ]

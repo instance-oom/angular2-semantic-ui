@@ -8,7 +8,7 @@ import { SEMANTIC_UI_COMPONENTS } from '../../angular2-semantic-ui';
   directives: [SEMANTIC_UI_COMPONENTS],
   template: `
     <div class="ui container" style="margin: 40px 0;">
-      <div class="ui header">Dimmer</div>
+      <!--<div class="ui header">Dimmer</div>
       <div style="width:100%; height: 100px; border: 1px solid black;" (click)="toggleDimmer()">
         Dimmer Demo (click to show or hiden)
         <lsu-dimmer [active]="activeDimmer">
@@ -96,7 +96,12 @@ import { SEMANTIC_UI_COMPONENTS } from '../../angular2-semantic-ui';
       </button>
       <div class="ui input">
         <input type="text" placeholder="Search..." lsu-popup [trigger]="'focus'" [content]="'Please input key word...'">
-      </div>
+      </div>-->
+      
+      <div class="ui header">Pagination</div>
+      <lsu-pagination [disabled]="pagerDisabled" [totalPages]="5" [totalCount]="totalCount" [pageSize]="10" [currentPage]="2" [maxSize]="5" [options]="pageOptions" (onSelectPage)="onSelectPage($event)"></lsu-pagination>
+      <button class="ui button" type="button" (click)="setTotalCount()">Set Count</button>
+      <button class="ui button" type="button" (click)="togglePagerDisable()">{{ pagerDisabled ? 'Enable':'Disable'}}</button>      
     </div>
   `
 })
@@ -134,6 +139,10 @@ class LsuDemo {
   private modalOptions: any;
 
   private accordOption: any;
+
+  private totalCount: number = 93;
+  private pagerDisabled: boolean = false;
+  private pageOptions: any;
   constructor() {
     this.progressPercent = 67;
 
@@ -156,6 +165,17 @@ class LsuDemo {
       "inverted": false,
       "allowMultiple": false
     }
+
+    this.pageOptions = {
+      "color": "default",
+      "hidenLabel": false,
+      "boundaryLinks": true,
+      "firstText": "First",
+      "lastText": "Last",
+      "directionLinks": true,
+      "prevText": "<",
+      "nextText": ">"
+    }
   }
 
   toggleDimmer(): void {
@@ -176,6 +196,18 @@ class LsuDemo {
 
   cancel(): void {
     this.showModal = false;
+  }
+
+  setTotalCount(): void {
+    this.totalCount = 32;
+  }
+
+  onSelectPage(event): void {
+    console.log("event: ", event);
+  }
+
+  togglePagerDisable(): void {
+    this.pagerDisabled = !this.pagerDisabled;
   }
 }
 
