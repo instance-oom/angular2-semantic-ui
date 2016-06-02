@@ -1,4 +1,4 @@
-# angular2-semantic-ui
+# angular2-semantic-ui  `1.1.6`
 Angular2 Components for <a href="http://semantic-ui.com/">Semantic UI</a>
 <br>
 `No jQuery Dependency`
@@ -30,3 +30,7 @@ npm run demo
 - <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/pagination">Pagination</a>
 
 Programing...
+
+#Change Log
+
+- 2016-06-02 Add Pagination Component
