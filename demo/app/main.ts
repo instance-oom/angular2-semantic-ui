@@ -99,7 +99,9 @@ import { SEMANTIC_UI_COMPONENTS } from '../../angular2-semantic-ui';
       </div>-->
       
       <div class="ui header">Pagination</div>
-      <lsu-pagination [disabled]="pagerDisabled" [totalPages]="5" [totalCount]="totalCount" [pageSize]="10" [currentPage]="2" [maxSize]="5" [options]="pageOptions" (onSelectPage)="onSelectPage($event)"></lsu-pagination>
+      <div style="padding:5px 0;">
+        <lsu-pagination [disabled]="pagerDisabled" [totalPages]="5" [totalCount]="totalCount" [pageSize]="10" [currentPage]="2" [maxSize]="5" [options]="pageOptions" (onSelectPage)="onSelectPage($event)"></lsu-pagination>
+      </div>
       <button class="ui button" type="button" (click)="setTotalCount()">Set Count</button>
       <button class="ui button" type="button" (click)="togglePagerDisable()">{{ pagerDisabled ? 'Enable':'Disable'}}</button>      
     </div>

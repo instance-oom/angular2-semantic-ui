@@ -6,7 +6,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     ` .disable_pagination {
         pointer-events: none;
         opacity: 0.6;
-        cursor: not-allowed;
       }
     `
   ],
@@ -14,19 +13,25 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     <div style="display: inline-block" [class.disable_pagination]="disabled">
       <p style="margin-bottom: 5px; text-align: center;" *ngIf="!options.hidenLabel">{{ currentPage }} of {{ totalPages }}</p>
       <div class="ui {{options.color || ''}} buttons">
-        <a class="ui button" *ngIf="options.boundaryLinks" (click)="toFirst()" [class.disabled]="currentPage == 1">
+        <a class="ui button" *ngIf="options.boundaryLinks" (click)="setPage(1)" [class.disabled]="currentPage == 1">
           {{ options.firstText || "<<" }}
         </a>
         <a class="ui button" *ngIf="options.directionLinks" (click)="pageUp()" [class.disabled]="currentPage == 1">
           {{ options.prevText || "Prev" }}
         </a>
+        <a class="ui icon button" *ngIf="showPrevMoreBtn" (click)="prevMore()">
+          <i class="ellipsis horizontal icon"></i>
+        </a>
         <button class="ui icon button" [class.active]="pageIndex == currentPage" *ngFor="let pageIndex of pages" (click)="setPage(pageIndex)">
           {{ pageIndex }}
         </button>
+        <a class="ui icon button" *ngIf="showNextMoreBtn" (click)="nextMore()">
+          <i class="ellipsis horizontal icon"></i>
+        </a>
         <a class="ui button" *ngIf="options.directionLinks" (click)="pageDown()" [class.disabled]="currentPage == totalPages">
           {{ options.nextText || "Next" }}
         </a>
-        <a class="ui button" *ngIf="options.boundaryLinks" (click)="toLast()" [class.disabled]="currentPage == totalPages">
+        <a class="ui button" *ngIf="options.boundaryLinks" (click)="setPage(totalPages)" [class.disabled]="currentPage == totalPages">
           {{ options.lastText || ">>" }} 
         </a>
       </div>
@@ -37,11 +42,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class PaginationComponent {
   @Input()
   private set maxSize(value: number) {
-    if (this._maxSize !== value) {
-      this._maxSize = value;
-      this.pages = this.getPages();
-    }
-    this._maxSize = value;
+    this._maxSize = value || 10;
+    this.updateTotalPages();
   }
   private get maxSize(): number {
     return this._maxSize;
@@ -49,11 +51,8 @@ export class PaginationComponent {
 
   @Input()
   private set pageSize(value: number) {
-    if (this._pageSize !== value) {
-      this._pageSize = value;
-      this.pages = this.getPages();
-    }
-    this._pageSize = value;
+    this._pageSize = value || 10;
+    this.updateTotalPages();
   }
   private get pageSize(): number {
     return this._pageSize;
@@ -61,39 +60,25 @@ export class PaginationComponent {
 
   @Input()
   private set totalCount(value: number) {
-    if (this._totalCount !== value) {
-      this._totalCount = value;
-      this.pages = this.getPages();
-    }
-    this._totalCount = value;
+    this._totalCount = value || 0;
+    this.updateTotalPages();
   }
   private get totalCount(): number {
     return this._totalCount;
   }
 
   @Input()
-  private set totalPages(value: number) {
-    if (this._totalPages !== value) {
-      this._totalPages = value;
-      this.pages = this.getPages();
-    }
-    this._totalPages = value;
-  }
-  private get totalPages(): number {
-    return this._totalPages;
-  }
-
-  @Input()
   private set currentPage(value: number) {
+    value = value || 1;
+    const _temp = this._currentPage;
     this._currentPage = value < 1 ? 1 : value > this.totalPages ? this.totalPages : value;
-    if (this.pages.indexOf(value) === -1) {
-      this.pages = this.getPages();
+    if (_temp === this._currentPage) {
+      return; //avoid dead circulation
     }
     if (this._inited) {
       this.onSelectPage.next(value);
     }
   }
-
   private get currentPage(): number {
     return this._currentPage;
   }
@@ -107,74 +92,94 @@ export class PaginationComponent {
   @Output()
   private onSelectPage: EventEmitter<any>;
 
-  protected _maxSize: number = 0;
-  protected _pageSize: number = 10;
+  protected _maxSize: number;
+  protected _pageSize: number;
   protected _totalCount: number;
-  protected _totalPages: number = 1;
-  protected _currentPage: number = 0;
+  protected _currentPage: number;
   protected _inited: boolean = false;
+  private totalPages: number;
   private pages: Array<number> = [];
+  private showPrevMoreBtn: boolean = false;
+  private showNextMoreBtn: boolean = false;
 
   constructor() {
     this.onSelectPage = new EventEmitter();
-    this.options.position = "left";
     this.options.directionLinks = true;
     this.options.boundaryLinks = false;
   }
 
   ngOnInit() {
     this._inited = true;
-    this.pages = this.getPages();
+    this.updateTotalPages();
   }
 
-  private getPages(): Array<number> {
-    let pages = [];
+  private updateTotalPages(): void {
+    if (!this._inited) return;
+    let pageCount: number;
     if (this.totalCount !== undefined) {
-      this.totalPages = Math.ceil(this.totalCount / this.pageSize);
+      let pageSize = this.pageSize < 1 ? 1 : this.pageSize;
+      pageCount = Math.ceil(this.totalCount / this.pageSize);
+      pageCount = pageCount > 1 ? pageCount : 1;
     }
-    if (this.currentPage > this.totalPages) {
-      this.currentPage = this.totalPages;
+    if (this.totalPages < 1) {
+      pageCount = 1;
     }
-    let prevCount = Math.ceil(this.maxSize / 2);
-    if ((this.totalPages - this.currentPage) <= Math.floor(this.maxSize / 2)) {
-      prevCount = this.maxSize - (this.totalPages - this.currentPage);
+    this.totalPages = pageCount;
+    this.setPage(this.currentPage);
+  }
+
+  private getPages(currentPage: number, totalPage: number): Array<number> {
+    let pages = [];
+    if (currentPage > totalPage) {
+      currentPage = totalPage;
     }
-    for (var i = this.currentPage; i > 0; i--) {
-      pages.unshift(i);
-      if (pages.length === prevCount) {
-        break;
-      }
+    if (this.maxSize > totalPage) {
+      this.maxSize = totalPage;
     }
-    for (var j = this.currentPage + 1; j <= this.totalPages; j++) {
-      pages.push(j);
-      if (pages.length === this.maxSize) {
-        break;
-      }
+    let beginPage = Math.max(currentPage - Math.floor(this.maxSize / 2), 1);
+    let endPage = beginPage + this.maxSize - 1;
+    if (endPage > totalPage) {
+      endPage = totalPage;
+      beginPage = endPage - this.maxSize + 1;
     }
+    for (let i = beginPage; i <= endPage; i++) {
+      pages.push(i);
+    }
+    this.showPrevMoreBtn = beginPage > 1;
+    this.showNextMoreBtn = endPage < totalPage;
     return pages;
   }
 
-  private pageUp(): void {
-    if (this.currentPage > 1) {
-      this.currentPage--;
+  private setPage(pageIndex: number, updateCurrentPage: boolean = true): void {
+    if (pageIndex < 1) {
+      pageIndex = 1;
     }
+    if (pageIndex > this.totalPages) {
+      pageIndex = this.totalCount;
+    }
+    if (updateCurrentPage) {
+      this.currentPage = pageIndex;
+    }
+    this.pages = this.getPages(pageIndex, this.totalPages);
   }
 
-  private setPage(pageIndex: number): void {
-    this.currentPage = pageIndex;
+  private pageUp(): void {
+    let pageIndex = this.currentPage - 1;
+    this.setPage(pageIndex);
   }
 
   private pageDown(): void {
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
-    }
+    let pageIndex = this.currentPage + 1;
+    this.setPage(pageIndex);
   }
 
-  private toFirst(): void {
-    this.currentPage = 1;
+  private prevMore(): void {
+    let pageIndex = this.pages[0] - 1;
+    this.setPage(pageIndex, false);
   }
 
-  private toLast(): void {
-    this.currentPage = this.totalPages;
+  private nextMore(): void {
+    let pageIndex = this.pages[this.pages.length - 1] + 1
+    this.setPage(pageIndex, false);
   }
 }

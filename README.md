@@ -27,5 +27,6 @@ npm run demo
 - <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/tab">Tab</a>
 - <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/accordion">Accordion</a>
 - <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/popup">Popup</a>
+- <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/pagination">Pagination</a>
 
 Programing...
