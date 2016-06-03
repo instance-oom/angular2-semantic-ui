@@ -4,8 +4,8 @@ import { ControlValueAccessor, NgModel } from '@angular/common';
 @Component({
   selector: "lsu-checkbox",
   template: `
-    <div class="ui {{type}} checkbox" [ngClass]="{'checked': checked}" (click)="toggleCheck()">
-      <input type="checkbox" [attr.checked]="checked? 'checked':null" [attr.disabled]="disabled ? 'disabled' : null">
+    <div class="ui {{type}} checkbox" [ngClass]="{'checked': checked}">
+      <input type="checkbox" [attr.checked]="checked? 'checked':null" [attr.disabled]="disabled ? 'disabled' : null" (click)="toggleCheck()">
       <label>{{ label }}</label>
     </div>
   `

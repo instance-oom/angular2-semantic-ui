@@ -36,6 +36,7 @@ export class PopupDirective {
     div.innerHTML = this.content;
     this.element.parentElement.appendChild(div);
     this.popupEle = document.getElementById(id);
+    this.setPosition();
   }
 
   private setPosition(): void {

@@ -13,7 +13,8 @@ npm install angular2-semantic-ui --save
 import { SEMANTIC_UI_COMPONENTS } from 'angular2-semantic-ui/angular2-semantic-ui';
 ```
 
-#Run Demo
+#Demo 
+<a href="http://demo.yangly.cn/">Online Demo</a>
 ```
 npm install
 npm run demo
@@ -37,3 +38,4 @@ Programing...
 #Change Log
 
 - 2016-06-02 Add Pagination Component
+- 2016-06-03 Fix bug

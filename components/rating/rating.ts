@@ -12,7 +12,14 @@ import { ControlValueAccessor, NgModel } from '@angular/common';
 
 export class RatingComponent implements ControlValueAccessor {
   @Input()
-  public maxRating: number = 1;
+  public set maxRating(val: number) {
+    this._maxRating = val;
+    this.ratings = this.getRatings(val);
+  }
+  public get maxRating(): number {
+    return this._maxRating;
+  }
+  protected _maxRating: number = 1;
 
   @Input()
   public rating: number = 0;
@@ -49,10 +56,15 @@ export class RatingComponent implements ControlValueAccessor {
   public ngOnInit(): void {
     this.type = this.type.toLowerCase();
     this.size = this.size.toLowerCase();
-    this.ratings = [];
-    for (let i = 0; i < this.maxRating; i++) {
-      this.ratings.push(i + 1);
+    this.ratings = this.getRatings(this.maxRating);
+  }
+
+  private getRatings(size: number): Array<number> {
+    let ratings = [];
+    for (let i = 0; i < size; i++) {
+      ratings.push(i + 1);
     }
+    return ratings;
   }
 
   private setRating(item: number): void {
