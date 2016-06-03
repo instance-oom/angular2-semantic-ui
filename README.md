@@ -1,4 +1,7 @@
-# angular2-semantic-ui  `1.1.6`
+# angular2-semantic-ui
+[![Dependency Status](https://david-dm.org/lon-yang/angular2-semantic-ui.svg)](https://david-dm.org/lon-yang/angular2-semantic-ui)
+[![devDependency Status](https://david-dm.org/lon-yang/angular2-semantic-ui/dev-status.svg)](https://david-dm.org/lon-yang/angular2-semantic-ui#dev-badge-embed)
+
 Angular2 Components for <a href="http://semantic-ui.com/">Semantic UI</a>
 <br>
 `No jQuery Dependency`
