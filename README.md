@@ -1,6 +1,8 @@
 # angular2-semantic-ui
 [![Dependency Status](https://david-dm.org/lon-yang/angular2-semantic-ui.svg)](https://david-dm.org/lon-yang/angular2-semantic-ui)
 [![npm version](https://badge.fury.io/js/angular2-semantic-ui.svg)](https://badge.fury.io/js/angular2-semantic-ui)
+[![npm downloads](https://img.shields.io/npm/dt/angular2-semantic-ui.svg)](https://badge.fury.io/js/angular2-semantic-ui)
+[![licence](https://img.shields.io/npm/l/angular2-semantic-ui.svg)](https://opensource.org/licenses/MIT)
 
 Angular2 Components for <a href="http://semantic-ui.com/">Semantic UI</a>
 <br>
