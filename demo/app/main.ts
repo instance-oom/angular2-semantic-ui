@@ -34,8 +34,12 @@ import { SEMANTIC_UI_COMPONENTS } from '../../angular2-semantic-ui';
       <button class="ui button" (click)="toggleCheckBoxDisabled()">{{ isCheckBoxDisabled ? 'Enable' : 'Disable' }}</button>
       
       <div class="ui header">DropDown</div>
-      <lsu-dropdown [(ngModel)]="selectedItem" [data]="dropdownData" [textField]="dropdownShowField"></lsu-dropdown>
+      <lsu-dropdown [(ngModel)]="selectedItem" [data]="dropdownData" [textField]="dropdownShowField" [placeHolder]="'select item'"></lsu-dropdown>
       {{ selectedItem|json }}
+
+      <div class="ui header">DropDown (Multiple)</div>
+      <lsu-dropdown [(ngModel)]="selectedItem2" [data]="dropdownData" [textField]="dropdownShowField" [placeHolder]="'select items'" [multiple]="'true'"></lsu-dropdown>
+      {{ selectedItem2 | json }}
       
       <div class="ui header">Modal</div>
       <lsu-modal [(ngModel)]="showModal" [options]="modalOptions">
@@ -134,6 +138,7 @@ class LsuDemo {
   private checkBoxType: string = "slider";
 
   private selectedItem: any;
+  private selectedItem2: any;
   private dropdownData: Array<any> = [];
   private dropdownShowField: string = "name";
 
@@ -178,6 +183,13 @@ class LsuDemo {
       "prevText": "<",
       "nextText": ">"
     }
+  }
+
+  ngOnInit() {
+    this.selectedItem2 = [{
+      id: 2,
+      name: "name_2"
+    }]
   }
 
   toggleDimmer(): void {
