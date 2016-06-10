@@ -4,8 +4,13 @@ import { ControlValueAccessor, NgModel } from '@angular/common';
 @Component({
   selector: 'lsu-dropdown',
   styles: [`.active{ display:block !important; }`],
+  host: {
+    '(document:click)': 'onDocumentClick($event)'
+  },
   template: `
-    <div class="ui fluid selection dropdown" [ngClass]="{'active':active,'visible':active,'multiple':multiple}" (click)="toggleSelectPanel()">
+    <div class="ui fluid selection dropdown" [attr.id]="id" 
+      [ngClass]="{'active':active,'visible':active,'multiple':multiple}" 
+      (click)="toggleSelectPanel($event)">
       <i class="dropdown icon"></i>
       <div class="default text" *ngIf="!selectedItem || selectedItem.length == 0">
         {{ placeHolder }}
@@ -13,14 +18,14 @@ import { ControlValueAccessor, NgModel } from '@angular/common';
       <div class="text" *ngIf=" selectedItem && !multiple ">
         {{ selectedItem[textField] || selectedItem }}
       </div>
-      <div *ngIf="selectedItem && multiple">
+      <div *ngIf="selectedItem && multiple"  [attr.id]="id+'_1'">
         <a class="ui label transition visible" style="display: inline-block !important;" *ngFor="let item of selectedItem">
           {{ item[textField] || item }}
           <i class="delete icon" (click)="removeItem(item, $event)"></i>
         </a>
       </div>
       <div class="menu transition hidden" [class.hidden]="!active" [class.visible]="active">
-        <div class="item" (click)="itemClick(item, $event)" *ngFor="let item of data">
+        <div class="item" [class.active]="isSelected(item)" [class.filtered]="isSelected(item) && multiple" (click)="itemClick(item, $event)" *ngFor="let item of data">
           {{ item[textField] || item }}
         </div>
       </div>
@@ -44,6 +49,8 @@ export class DropdownComponent implements ControlValueAccessor {
   private selectedItem: any;
   private active: boolean = false;
 
+  private id: string;
+
   private onChange: Function;
   private onTouched: Function;
   private vm: NgModel
@@ -51,6 +58,7 @@ export class DropdownComponent implements ControlValueAccessor {
   constructor(vm: NgModel) {
     this.vm = vm;
     vm.valueAccessor = this;
+    this.id = `lsu_dropdown_${Math.random()}`;
   }
 
   public writeValue(value: any): void {
@@ -66,38 +74,70 @@ export class DropdownComponent implements ControlValueAccessor {
   }
 
   public ngOnInit(): void {
-    if (this.multiple && !this.selectedItem) {
-      this.selectedItem = [];
+    if (this.multiple) {
+      this.selectedItem = this.selectedItem || [];
+      for (let i = 0; i < this.selectedItem.length; i++) {
+        let initItem = this.selectedItem[i];
+        for (let j = 0; j < this.data.length; j++) {
+          let candidateItem = this.data[j];
+          if (JSON.stringify(initItem) === JSON.stringify(candidateItem)) {
+            this.selectedItem[i] = this.data[j];
+            break;
+          }
+        }
+      }
     }
   }
 
-  toggleSelectPanel(): void {
+  private onDocumentClick(event: any): void {
+    let id: string = event.target.id;
+    if (this.active && id !== this.id && id !== `${this.id}_1`) {
+      this.active = false;
+    }
+  }
+
+  toggleSelectPanel(event?: any): void {
     this.active = !this.active;
+    if (event) {
+      // event.stopPropagation();
+    }
+  }
+
+  private isSelected(item: any): boolean {
+    if (!this.selectedItem) {
+      return false;
+    }
+    if (this.multiple) {
+      let index: number = this.selectedItem.indexOf(item);
+      return index !== -1;
+    } else {
+      return this.selectedItem === item;
+    }
+
   }
 
   itemClick(item: any, event: any): void {
     let value: any;
     if (this.multiple) {
       value = this.selectedItem || [];
-      let index = this.data.indexOf(item);
-      if (index !== -1) {
-        value.push(item);
-        this.data.splice(index, 1);
+      value.push(item);
+      if (value.length === this.data.length) {
+        this.toggleSelectPanel();
       }
-      event.stopPropagation();
     } else {
       value = item;
+      this.toggleSelectPanel();
     }
     this.writeValue(value);
     this.vm.viewToModelUpdate(value);
+    event.stopPropagation();
   }
 
   removeItem(item: any, event: any): void {
-    let value = this.selectedItem;
-    let index = value.indexOf(item);
+    let value: any = this.selectedItem;
+    let index: number = value.indexOf(item);
     if (index !== -1) {
       value.splice(index, 1);
-      this.data.push(item);
     }
     this.writeValue(value);
     this.vm.viewToModelUpdate(value);

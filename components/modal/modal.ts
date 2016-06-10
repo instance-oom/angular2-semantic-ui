@@ -71,7 +71,7 @@ export class ModalComponent implements ControlValueAccessor {
     this.element = document.getElementById(this.id);
   }
 
-  private clickContent(event): void {
+  private clickContent(event: any): void {
     event.stopPropagation();
   }
 

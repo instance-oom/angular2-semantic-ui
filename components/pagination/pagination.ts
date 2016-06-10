@@ -129,7 +129,7 @@ export class PaginationComponent {
   }
 
   private getPages(currentPage: number, totalPage: number): Array<number> {
-    let pages = [];
+    let pages:Array<number> = [];
     if (currentPage > totalPage) {
       currentPage = totalPage;
     }

@@ -60,7 +60,7 @@ export class RatingComponent implements ControlValueAccessor {
   }
 
   private getRatings(size: number): Array<number> {
-    let ratings = [];
+    let ratings:Array<number> = [];
     for (let i = 0; i < size; i++) {
       ratings.push(i + 1);
     }
