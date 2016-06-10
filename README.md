@@ -16,8 +16,10 @@ import { SEMANTIC_UI_COMPONENTS } from 'angular2-semantic-ui/angular2-semantic-u
 ```
 
 #Demo 
-<a href="http://demo.yangly.cn/">Online Demo</a>
+<a href="http://demo.yangly.cn/" target="_blank">Online Demo</a>
 ```
+git clone https://github.com/lon-yang/angular2-semantic-ui.git
+cd angular2-semantic-ui
 npm install
 npm run demo
 ```
@@ -35,9 +37,8 @@ npm run demo
 - <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/popup">Popup</a>
 - <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/pagination">Pagination</a>
 
-Programing...
-
 #Change Log
 
 - 2016-06-02 Add Pagination Component
 - 2016-06-03 Fix bug
+- 2016-06-10 Dropdown support multiple
