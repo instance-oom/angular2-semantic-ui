@@ -2,6 +2,11 @@ import { Component, Input, AfterContentInit } from '@angular/core';
 
 @Component({
   selector: "lsu-tab",
+  styles:[
+    `.ui.bottom.attached.tab.segment.active {
+      border-top: none;
+    }`
+  ],
   template: `
     <div class="{{tabCls}}" [ngClass]="{'active': active}" style="margin: 0; width: 100%;">
       <ng-content></ng-content>      

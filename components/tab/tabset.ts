@@ -56,7 +56,7 @@ export class TabSetComponent implements AfterContentInit {
       }
     }
     if (!hasActivedTab) {
-      this.setTab(this.tabs[0]);
+      this.setTab(this._tabs[0]);
     }
   }
 }
