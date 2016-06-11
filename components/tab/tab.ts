@@ -3,7 +3,7 @@ import { Component, Input, AfterContentInit } from '@angular/core';
 @Component({
   selector: "lsu-tab",
   template: `
-    <div class="ui bottom attached tab segment" [ngClass]="{'active': active}" style="margin: 0; width: 100%; border-top: none;">
+    <div class="{{tabCls}}" [ngClass]="{'active': active}" style="margin: 0; width: 100%;">
       <ng-content></ng-content>      
     </div>
   `
@@ -16,6 +16,7 @@ export class TabComponent implements AfterContentInit {
   @Input()
   public active: boolean = false;
 
+  public tabCls: string;
   constructor() {
 
   }

@@ -4,7 +4,7 @@ import { TabComponent } from './tab';
 @Component({
   selector: "lsu-tabset",
   template: `
-    <div class="ui top attached tabular menu">
+    <div class="{{tabSetCls}}">
       <a class="item" *ngFor="let tab of _tabs" [ngClass]="{'active': tab.active}" (click)="setTab(tab)">
         {{ tab.headerText }}
       </a>            
@@ -15,9 +15,13 @@ import { TabComponent } from './tab';
 
 export class TabSetComponent implements AfterContentInit {
   @ContentChildren(TabComponent)
-  public tabs: QueryList<TabComponent>;
+  private tabs: QueryList<TabComponent>;
+
+  @Input()
+  private type: string;
 
   private _tabs: Array<TabComponent> = [];
+  private tabSetCls: string;
   constructor() {
   }
 
@@ -31,13 +35,24 @@ export class TabSetComponent implements AfterContentInit {
     if (this._tabs.length == 0) {
       throw new Error("Cannot no tab in tabset.");
     }
+
+    let tabCls: string = "ui bottom attached tab segment";
+    this.tabSetCls = "ui top attached tabular menu";
+    if (this.type === "secondary") {
+      this.tabSetCls = "ui secondary menu";
+      tabCls = "ui tab segment";
+    } else if (this.type === "pointing") {
+      this.tabSetCls = "ui pointing secondary menu";
+      tabCls = "ui tab segment";      
+    }
+
     let hasActivedTab = false;
-    for (var i = 0; i < this._tabs.length; i++) {
+    for (let i = 0; i < this._tabs.length; i++) {
       let tab = this._tabs[i];
-      if (tab.active) {
+      tab.tabCls = tabCls;
+      if (tab.active && !hasActivedTab) {
         this.setTab(tab);
         hasActivedTab = true;
-        break;
       }
     }
     if (!hasActivedTab) {
