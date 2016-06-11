@@ -31,12 +31,17 @@ export class TabSetComponent implements AfterContentInit {
     if (this._tabs.length == 0) {
       throw new Error("Cannot no tab in tabset.");
     }
+    let hasActivedTab = false;
     for (var i = 0; i < this._tabs.length; i++) {
       let tab = this._tabs[i];
       if (tab.active) {
         this.setTab(tab);
+        hasActivedTab = true;
         break;
       }
+    }
+    if (!hasActivedTab) {
+      this.setTab(this.tabs[0]);
     }
   }
 }
