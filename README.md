@@ -16,12 +16,16 @@ import { SEMANTIC_UI_COMPONENTS } from 'angular2-semantic-ui/angular2-semantic-u
 ```
 
 #Demo 
-<a href="http://demo.yangly.cn/" target="_blank">Online Demo</a>
-```
-git clone https://github.com/lon-yang/angular2-semantic-ui.git
-cd angular2-semantic-ui
+<a href="http://demo.yangly.cn/" target="_blank">Online Demo</a><br>
+<a href="https://github.com/lon-yang/angular2-semantic-ui-demo">Demo Code</a>
+```cmd
+git clone https://github.com/lon-yang/angular2-semantic-ui-demo.git
+
+cd angular2-semantic-ui-demo
+
 npm install
-npm run demo
+
+npm start
 ```
 
 # Current Included Components

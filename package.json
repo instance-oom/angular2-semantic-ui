@@ -4,10 +4,8 @@
   "description": "Angular2 Directives for Semantic UI",
   "main": "index.js",
   "scripts": {
-    "demo": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
     "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "lite": "lite-server -c demo/lite-server.json"
+    "tsc:w": "tsc -w"
   },
   "repository": {
     "type": "git",
@@ -16,7 +14,8 @@
   "keywords": [
     "angular2",
     "semantic",
-    "ui"
+    "ui",
+    "semantic-ui"
   ],
   "author": "",
   "license": "MIT",
@@ -37,8 +36,6 @@
     "zone.js": "^0.6.12"
   },
   "devDependencies": {
-    "concurrently": "^2.1.0",
-    "lite-server": "^2.2.0",
     "typescript": "^1.8.10",
     "typings": "^1.0.4"
   }
