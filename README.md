@@ -46,3 +46,4 @@ npm start
 - 2016-06-02 Add Pagination Component
 - 2016-06-03 Fix bug
 - 2016-06-10 Dropdown support multiple
+- 2016-06-11 Fix tabset component's bug
