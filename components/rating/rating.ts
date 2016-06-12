@@ -14,6 +14,9 @@ export class RatingComponent implements ControlValueAccessor {
   @Input()
   public set maxRating(val: number) {
     this._maxRating = val;
+    if (this.rating > val) {
+      this.setRating(val);
+    }
     this.ratings = this.getRatings(val);
   }
   public get maxRating(): number {

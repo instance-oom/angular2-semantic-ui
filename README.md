@@ -47,3 +47,4 @@ npm start
 - 2016-06-03 Fix bug
 - 2016-06-10 Dropdown support multiple
 - 2016-06-11 Fix tabset component's bug
+- 2016-06-12 Improve tabset and add onChange event for checkbox, fix some bug

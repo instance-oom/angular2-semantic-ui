@@ -18,9 +18,19 @@ export class TabSetComponent implements AfterContentInit {
   private tabs: QueryList<TabComponent>;
 
   @Input()
-  private type: string;
+  private set type(val: string) {
+    if (this._type !== val) {
+      this.generateClass(val);
+    }
+    this._type = val;
+  };
+
+  private get type(): string {
+    return this._type;
+  }
 
   private _tabs: Array<TabComponent> = [];
+  private _type: string = 'tabular';
   private tabSetCls: string;
   constructor() {
   }
@@ -36,20 +46,12 @@ export class TabSetComponent implements AfterContentInit {
       throw new Error("Cannot no tab in tabset.");
     }
 
-    let tabCls: string = "ui bottom attached tab segment";
-    this.tabSetCls = "ui top attached tabular menu";
-    if (this.type === "secondary") {
-      this.tabSetCls = "ui secondary menu";
-      tabCls = "ui tab segment";
-    } else if (this.type === "pointing") {
-      this.tabSetCls = "ui pointing secondary menu";
-      tabCls = "ui tab segment";      
-    }
+    this.generateClass(this.type);
 
     let hasActivedTab = false;
     for (let i = 0; i < this._tabs.length; i++) {
       let tab = this._tabs[i];
-      tab.tabCls = tabCls;
+      tab.type = this.type;
       if (tab.active && !hasActivedTab) {
         this.setTab(tab);
         hasActivedTab = true;
@@ -58,5 +60,16 @@ export class TabSetComponent implements AfterContentInit {
     if (!hasActivedTab) {
       this.setTab(this._tabs[0]);
     }
+  }
+
+  private generateClass(type: string): void {
+    if (type === "secondary") {
+      this.tabSetCls = "ui secondary menu";
+    } else if (type === "pointing") {
+      this.tabSetCls = "ui pointing secondary menu";
+    } else {
+      this.tabSetCls = "ui top attached tabular menu";
+    }
+    this._tabs.forEach(t => t.type = type);
   }
 }

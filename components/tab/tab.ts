@@ -8,7 +8,7 @@ import { Component, Input, AfterContentInit } from '@angular/core';
     }`
   ],
   template: `
-    <div class="{{tabCls}}" [ngClass]="{'active': active}" style="margin: 0; width: 100%;">
+    <div class="ui tab" [ngClass]="{'active': active, 'segment':useSegment, 'bottom':type == 'tabular', 'attached':type == 'tabular' }" style="margin: 0; width: 100%;">
       <ng-content></ng-content>      
     </div>
   `
@@ -21,7 +21,7 @@ export class TabComponent implements AfterContentInit {
   @Input()
   public active: boolean = false;
 
-  public tabCls: string;
+  public type: string;
   constructor() {
 
   }

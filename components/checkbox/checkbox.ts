@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, NgModel } from '@angular/common';
 
 @Component({
   selector: "lsu-checkbox",
   template: `
     <div class="ui {{type}} checkbox" [ngClass]="{'checked': checked}">
-      <input type="checkbox" [attr.checked]="checked? 'checked':null" [attr.disabled]="disabled ? 'disabled' : null" (click)="toggleCheck()">
+      <input type="checkbox" [attr.checked]="checked? 'checked':null" [attr.disabled]="disabled ? 'disabled' : null" (click)="toggleCheck($event)">
       <label>{{ label }}</label>
     </div>
   `
@@ -24,12 +24,16 @@ export class CheckBoxComponent implements ControlValueAccessor {
   @Input()
   public label: string;
 
-  private onChange: Function;
-  private onTouched: Function;
+  @Output()
+  private onChange: EventEmitter<any>;
+
+  private _onChange: Function;
+  private _onTouched: Function;
   private vm: NgModel
   constructor(vm: NgModel) {
     this.vm = vm;
     vm.valueAccessor = this;
+    this.onChange = new EventEmitter();
   }
 
   public writeValue(value: boolean): void {
@@ -37,19 +41,20 @@ export class CheckBoxComponent implements ControlValueAccessor {
   }
 
   public registerOnChange(fn: (_: any) => {}): void {
-    this.onChange = fn;
+    this._onChange = fn;
   }
 
   public registerOnTouched(fn: () => {}): void {
-    this.onTouched = fn;
+    this._onTouched = fn;
   }
 
-  toggleCheck(): void {
+  toggleCheck(event: any): void {
     if (this.disabled) {
       return;
     }
     var value: boolean = !this.checked
     this.writeValue(value);
     this.vm.viewToModelUpdate(value);
+    this.onChange.next(event);
   }
 }

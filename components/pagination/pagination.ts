@@ -104,12 +104,12 @@ export class PaginationComponent {
 
   constructor() {
     this.onSelectPage = new EventEmitter();
-    this.options.directionLinks = true;
-    this.options.boundaryLinks = false;
   }
 
   ngOnInit() {
     this._inited = true;
+    this.options.directionLinks = this.options.directionLinks || true;
+    this.options.boundaryLinks = this.options.boundaryLinks !== undefined ? this.options.boundaryLinks : false;
     this.updateTotalPages();
   }
 
@@ -129,7 +129,7 @@ export class PaginationComponent {
   }
 
   private getPages(currentPage: number, totalPage: number): Array<number> {
-    let pages:Array<number> = [];
+    let pages: Array<number> = [];
     if (currentPage > totalPage) {
       currentPage = totalPage;
     }
