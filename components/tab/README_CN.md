@@ -1,5 +1,4 @@
 # Tab Usage
-<a href="https://github.com/lon-yang/angular2-semantic-ui/blob/master/components/tab/README_CN.md">简体中文</a>
 
 ```typesctript
   import { TAB_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
@@ -19,6 +18,6 @@
 ```
 
 # Options
-- headerText: Required，Tab's title
-- active: Optional. Whether to activate the tab page
-- type: Optional. Tab's type ` [ tabular | secondary | pointing ] `, default is `tabular`
+- headerText: 必选，Tab Header
+- active: 可选，是否激活Tab页
+- type: 可选, tab样式 `[ tabular | secondary | pointing ]` 默认 `tabular`

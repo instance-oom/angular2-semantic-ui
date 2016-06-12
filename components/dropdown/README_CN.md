@@ -1,5 +1,4 @@
 # Dropdown Usage
-<a href="https://github.com/lon-yang/angular2-semantic-ui/blob/master/components/dropdown/README_CN.md">简体中文</a>
 
 ```typesctript
   import { DROPDOWN_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
@@ -11,7 +10,7 @@
 ```
 
 # Options
-- data: Required. Array&lt;any&gt;，When the array is stored `object`, you need to specify the `textField`
-- textField: Optional，Specify which properties are used to display in the page
-- placeHolder: Optional
-- multiple: Optional，Default is false
+- data: 必选，数组类型，当数组里面保存的是 `object` 时，需要指定`textField`
+- textField: 可选，指定哪个属性用于在界面上显示出来
+- placeHolder: 可选
+- multiple: 可选，是否允许多选，默认不允许

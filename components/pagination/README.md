@@ -1,4 +1,5 @@
 # Pagination Usage
+<a href="https://github.com/lon-yang/angular2-semantic-ui/blob/master/components/pagination/README_CN.md">简体中文</a>
 
 ```typesctript
   import { PAGINATION_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
@@ -26,18 +27,18 @@ onSelectPage(pageIndex): void {
 ```
 
 # Options
-- disabled: 可选，用于控制Pagination是否可操作
-- totalCount: 必选，总的数量
-- pageSize: 可选，每页的大小，默认10
-- currentPage: 可选，当前选中页，默认第一页
-- maxSize: 可选，显示多少个页码，默认10
-- options: 可选
-  - color: "default"，控件颜色，参考semantic-ui颜色class
-  - hidenLabel: true，是否显示页码提示，类似 `2 of 10`，默认开启
-  - boundaryLinks: false，是否显示 `第一页` 和 `最后一页` 按钮，默认关闭
-  - firstText: "First"，`第一页` 按钮提示文字，`boundaryLinks` 开启有效
-  - lastText: "Last"，`最后一页` 按钮提示文字，`boundaryLinks` 开启有效
-  - directionLinks: true，是否显示 `上一页` 和 `下一页` 按钮，默认开启
-  - prevText: "<"，`上一页` 按钮提示文字，`directionLinks` 开启有效
-  - nextText: ">"，`下一页` 按钮提示文字，`directionLinks` 开启有效
-- onSelectPage: 可选，接收页码变化的函数，`$event` 选中的页码  
+- disabled:  Optional. Type of boolean. Default is false
+- totalCount:  Required
+- pageSize:  Optional. Default is 10
+- currentPage:  Optional. Default is 1
+- maxSize:  Optional. How many page numbers will show in the page. Default is 10
+- onSelectPage:  Optional. The function receives page changes, $event is the selected page number
+- options:  Optional.
+  - color:  Optional. Type of string.
+  - hidenLabel:  Optional. Whether to display the page prompts, Default is true
+  - boundaryLinks:  Optional. Whether to display the first page button and the last page button, Default is false
+  - firstText:  Optional. First page button's text, Default is First
+  - lastText:  Optional. Last page button's text, Default is Last
+  - directionLinks:  Optional. Whether to display the prev page button and the next page button, Default is true
+  - prevText:  Optional. Prev page button's text
+  - nextText:  Optional. Next page button's text

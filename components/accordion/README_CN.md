@@ -1,5 +1,4 @@
 # Accordion Usage
-<a href="https://github.com/lon-yang/angular2-semantic-ui/blob/master/components/accordion/README_CN.md">简体中文</a>
 
 ```typesctript
   import { ACCORDION_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
@@ -19,18 +18,18 @@
 ```
 ```typescript
   accordOption = {
-    "styled": true,
-    "fluid": true,
-    "inverted": false,
-    "allowMultiple": false
+    "styled": true,     // 默认为true
+    "fluid": true,      // 默认为true
+    "inverted": false,  // 默认为false
+    "allowMultiple": false  // 是否允许同时展开多个Panel，默认为false
   }
 ```
 
 # Options
-- option: Optional
-  - styled: Boolean. accordion class, default is true
-  - fluid: Boolean. accordion class, default is true
-  - inverted: Boolean. accordion class, default is false
-  - allowMultiple: Boolean. Whether to allow multiple Panel at the same time
-- title: Required. Belong to `lsu-accordionPanel`, Panel's title
-- active: Optional. Belong to `lsu-accordionPanel`, Configuration Panel is expanded, in the case of multiple Panel is not allowed to start at the same time, only the last one will be expanded
+- option: 可选
+  - styled: Boolean. accordion class, 默认为true
+  - fluid: Boolean. accordion class, 默认为true
+  - inverted: Boolean. accordion class, 默认为false
+  - allowMultiple: Boolean. 是否允许同时展开多个Panel，默认为false
+- title: String. `lsu-accordionPanel`的属性, Panel标题
+- active: Boolean. `lsu-accordionPanel`的属性, Panel是否展开, 在不允许同时展开多个Panel的情况下, 只展开最后一个active的Panel

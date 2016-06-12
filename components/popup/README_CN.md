@@ -1,5 +1,4 @@
 # Popup Usage
-<a href="https://github.com/lon-yang/angular2-semantic-ui/blob/master/components/popup/README_CN.md">简体中文</a>
 
 ```typesctript
   import { POPUP_DIRECTIVES } from 'angular2-semantic-ui/compangular2-semantic-uionents'
@@ -17,5 +16,5 @@
 ```
 
 # Options
-- trigger:  Optional. The way to trigger Popup ` [ hover | click | docus] `, Default is hover
-- content:  Optional. Popup's text
+- trigger: 可选，触发Popup的方式, 默认`hover`,可选值[ `hover` | `click` | `focus` ]
+- content: 可选，提示文字

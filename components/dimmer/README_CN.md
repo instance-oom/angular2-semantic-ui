@@ -1,5 +1,4 @@
 # Dimmer Usage
-<a href="https://github.com/lon-yang/angular2-semantic-ui/blob/master/components/dimmer/README_CN.md">简体中文</a>
 
 ```typesctript
   import { DIMMER_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
@@ -14,4 +13,4 @@
 ```
 
 # Options
-- active: Required. Used to control the Dimmer's explicit
+- active: 必选，用于控制Dimmer的显隐

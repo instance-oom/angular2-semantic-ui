@@ -1,4 +1,5 @@
-# Dimmer Usage
+# Checkbox Usage
+<a href="https://github.com/lon-yang/angular2-semantic-ui/blob/master/components/checkbox/README_CN.md">简体中文</a>
 
 ```typesctript
   import { CHECKBOX_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
@@ -8,7 +9,7 @@
 ```
 
 # Options
-- disabled: 可选
-- label: 可选，待显示文字
-- type: 可选，checkbox样式，` [checkbox|slider|toggle] `
-- onChange: 可选, Change事件
+- disabled: Optional. Boolean
+- label: Optional. The checkbox's label
+- type: Optional. The checkbox's type,` [checkbox|slider|toggle] `, default is checkbox
+- onChange: Optional.

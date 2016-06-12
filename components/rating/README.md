@@ -1,4 +1,5 @@
 # Rating Usage
+<a href="https://github.com/lon-yang/angular2-semantic-ui/blob/master/components/rating/README_CN.md">简体中文</a>
 
 ```typesctript
   import { RATING_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
@@ -8,7 +9,7 @@
 ```
 
 # Options
-- rating: 必选，当前评分
-- maxRating: 必选，最大评分数
-- type: 可选，评分图标类型 `[ heart | star(default)]`
-- size: 科学，评分控件大小 `[ mini | tiny | small | normal(default) | large | huge | massive ]`
+- rating:  Required. Current rating
+- maxRating:  Required. Maximum rating
+- type:  Optional. Rating icon type ` [ heart | star(default)] `
+- size:  Optional. ` [ mini | tiny | small | normal(default) | large | huge | massive ] `

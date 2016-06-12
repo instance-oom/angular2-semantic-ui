@@ -1,5 +1,4 @@
 # Modal Usage
-<a href="https://github.com/lon-yang/angular2-semantic-ui/blob/master/components/modal/README_CN.md">简体中文</a>
 
 ```typesctript
   import { MODAL_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
@@ -31,8 +30,8 @@
 ```
 ```typescript
   modalOptions = {
-    "size": "small",
-    "type": "basic",
+    "size": "small",  //modal尺寸[ small | large | fullscreen]
+    "type": "basic",  //modal类型[ basic ], 为空为默认样式
     "closeable": true
   }
   
@@ -46,8 +45,5 @@
 ```
 
 # Options
-- ngModel: Required. Boolean. Used to control the Modal's explicit
-- modalOptions: Optional. Modal's options
-  - size: Optional. Modal's size ` [ small | large | fullscreen] `
-  - type: Optional. Modal's type ` [ basic | default ]`
-  - closeable: Optional
+- ngModel: 必选，控制Modal显隐
+- modalOptions: 可选，Modal配置 <a href="http://semantic-ui.com/modules/modal.html#/settings">Semantic-ui Modal Setting</a>

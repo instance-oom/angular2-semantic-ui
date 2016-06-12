@@ -1,4 +1,5 @@
 # Progress Usage
+<a href="https://github.com/lon-yang/angular2-semantic-ui/blob/master/components/progress/README_CN.md">简体中文</a>
 
 ```typesctript
   import { PROGRESS_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
@@ -8,8 +9,8 @@
 ```
 
 # Options
-- percent: 必选，进度（0-100）
-- text: 可选，progress显示文字（50%、70%......）
-- label: 可选，标签（显示在porgress下方）
-- color: 可选，背景色, 具体可参见<a href="http://semantic-ui.com/modules/progress.html#color">Semantic-Ui Progress Color</a>
-- size: 可选，控件尺寸, 具体可参见<a href="http://semantic-ui.com/modules/progress.html#size">Semantic-Ui Progress Size</a>
+- percent:  Required. 0-100
+- text:  Optional. Just like 50% 、70% 、90%...
+- label:  Optional. Shown below porgress
+- color:  Optional. see Semantic-Ui Progress Color
+- size:  Optional. ` [ tiny | small | standard | large | big ] `, Default is standard

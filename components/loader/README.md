@@ -1,4 +1,5 @@
 # Loader Usage
+<a href="https://github.com/lon-yang/angular2-semantic-ui/blob/master/components/loader/README_CN.md">简体中文</a>
 
 ```typesctript
   import { LOADER_DIRECTIVES } from 'angular2-semantic-ui/compangular2-semantic-uionents'
@@ -10,6 +11,6 @@
 ```
 
 # Options
-- active: 必选，控制Loader显隐
-- loaderText: 可选，提示文字
-- loaderSize: 可选，Loader尺寸[mini | small | medium | large]
+- active:  Required. Used to control the Loader's explicit
+- loaderText: Optional. The text will be displayied in page 
+- loaderSize: Optional. Loader's size [mini | small | medium | large]
