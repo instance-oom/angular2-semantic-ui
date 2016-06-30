@@ -1,4 +1,4 @@
-# angular2-semantic-ui
+# angular2-semantic-ui[![Analytics](https://ga-beacon.appspot.com/UA-80126017-1/welcome-page)](https://github.com/lon-yang/angular2-semantic-ui)
 [![Dependency Status](https://david-dm.org/lon-yang/angular2-semantic-ui.svg)](https://david-dm.org/lon-yang/angular2-semantic-ui)
 [![npm version](https://badge.fury.io/js/angular2-semantic-ui.svg)](https://www.npmjs.com/package/angular2-semantic-ui)
 [![npm downloads](https://img.shields.io/npm/dt/angular2-semantic-ui.svg)](https://www.npmjs.com/package/angular2-semantic-ui)
