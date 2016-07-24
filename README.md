@@ -1,4 +1,4 @@
-# angular2-semantic-ui
+# angular2-semantic-ui[![Analytics](https://ga-beacon.appspot.com/UA-80126017-1/welcome-page)](https://github.com/lon-yang/angular2-semantic-ui)
 [![Dependency Status](https://david-dm.org/lon-yang/angular2-semantic-ui.svg)](https://david-dm.org/lon-yang/angular2-semantic-ui)
 [![npm version](https://badge.fury.io/js/angular2-semantic-ui.svg)](https://www.npmjs.com/package/angular2-semantic-ui)
 [![npm downloads](https://img.shields.io/npm/dt/angular2-semantic-ui.svg)](https://www.npmjs.com/package/angular2-semantic-ui)
@@ -48,4 +48,7 @@ npm start
 - 2016-06-10 Dropdown support multiple
 - 2016-06-11 Fix tabset component's bug
 - 2016-06-12 Improve tabset and add onChange event for checkbox, fix some bug
+<<<<<<< HEAD
 - 2016-07-24 Upgrade angular2 to `rc4` and remove unused dependencies
+=======
+>>>>>>> 37244cdb67e7271e0b828403b6141a907a0d20e1
