@@ -48,7 +48,4 @@ npm start
 - 2016-06-10 Dropdown support multiple
 - 2016-06-11 Fix tabset component's bug
 - 2016-06-12 Improve tabset and add onChange event for checkbox, fix some bug
-<<<<<<< HEAD
 - 2016-07-24 Upgrade angular2 to `rc4` and remove unused dependencies
-=======
->>>>>>> 37244cdb67e7271e0b828403b6141a907a0d20e1
