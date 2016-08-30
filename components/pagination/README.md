@@ -2,7 +2,7 @@
 <a href="https://github.com/lon-yang/angular2-semantic-ui/blob/master/components/pagination/README_CN.md">简体中文</a>
 
 ```typesctript
-  import { PAGINATION_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
+  import { PAGINATION_DIRECTIVES } from 'angular2-semantic-ui'
 ```
 ```html
   <lsu-pagination [disabled]="pagerDisabled" [totalCount]="totalCount" [pageSize]="10" [currentPage]="2" [maxSize]="5" [options]="pageOptions" (onSelectPage)="onSelectPage($event)"></lsu-pagination>

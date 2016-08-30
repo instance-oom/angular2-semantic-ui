@@ -2,7 +2,7 @@
 <a href="https://github.com/lon-yang/angular2-semantic-ui/blob/master/components/dimmer/README_CN.md">简体中文</a>
 
 ```typesctript
-  import { DIMMER_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
+  import { DIMMER_DIRECTIVES } from 'angular2-semantic-ui'
 ```
 ```html
   <div style="width:100%; height: 200px">

@@ -1,7 +1,7 @@
 # Progress Usage
 
 ```typesctript
-  import { PROGRESS_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
+  import { PROGRESS_DIRECTIVES } from 'angular2-semantic-ui'
 ```
 ```html
   <lsu-progress [label]="'Uploading file'" [percent]="percent" [text]="''" [color]="'teal'" [size]="'standard'"></lsu-progress>

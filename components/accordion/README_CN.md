@@ -1,7 +1,7 @@
 # Accordion Usage
 
 ```typesctript
-  import { ACCORDION_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
+  import { ACCORDION_DIRECTIVES } from 'angular2-semantic-ui'
 ```
 ```html
   <lsu-accordion [option]="accordOption">

@@ -2,7 +2,7 @@
 <a href="https://github.com/lon-yang/angular2-semantic-ui/blob/master/components/tab/README_CN.md">简体中文</a>
 
 ```typesctript
-  import { TAB_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
+  import { TAB_DIRECTIVES } from 'angular2-semantic-ui'
 ```
 ```html
   <lsu-tabset type="'secondary'">

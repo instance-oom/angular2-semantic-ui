@@ -1,7 +1,7 @@
 # Checkbox Usage
 
 ```typesctript
-  import { CHECKBOX_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
+  import { CHECKBOX_DIRECTIVES } from 'angular2-semantic-ui'
 ```
 ```html
   <lsu-checkbox [(ngModel)]="isChecked" [disabled]="'false'" [label]="'CheckBox'" [type]="'slider'" (onChange)="onChange($event)"></lsu-checkbox>

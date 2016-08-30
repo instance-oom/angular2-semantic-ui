@@ -1,7 +1,7 @@
 # Pagination Usage
 
 ```typesctript
-  import { PAGINATION_DIRECTIVES } from 'angular2-semantic-ui/angular2-semantic-ui'
+  import { PAGINATION_DIRECTIVES } from 'angular2-semantic-ui'
 ```
 ```html
   <lsu-pagination [disabled]="pagerDisabled" [totalCount]="totalCount" [pageSize]="10" [currentPage]="2" [maxSize]="5" [options]="pageOptions" (onSelectPage)="onSelectPage($event)"></lsu-pagination>
