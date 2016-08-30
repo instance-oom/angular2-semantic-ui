@@ -24,8 +24,7 @@
   },
   "homepage": "https://github.com/lon-yang/angular2-semantic-ui#readme",
   "dependencies": {
-    "@angular/common": "^2.0.0-rc.4",
-    "@angular/core": "^2.0.0-rc.4",
+    "@angular/core": "^2.0.0-rc.5",
     "@angular/forms": "^0.3.0"
   },
   "devDependencies": {

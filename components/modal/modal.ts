@@ -1,5 +1,5 @@
-import { Component, Input, Output } from '@angular/core';
-import { ControlValueAccessor, NgModel } from '@angular/common';
+import { Component, Input, Output, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'lsu-modal',
@@ -22,7 +22,12 @@ import { ControlValueAccessor, NgModel } from '@angular/common';
         <ng-content></ng-content>    
       </div>
     </div>
-  `
+  `,
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => ModalComponent),
+    multi: true
+  }]
 })
 
 export class ModalComponent implements ControlValueAccessor {

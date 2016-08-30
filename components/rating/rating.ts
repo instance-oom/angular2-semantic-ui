@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { ControlValueAccessor, NgModel } from '@angular/common';
+import { Component, Input, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'lsu-rating[ngModel]',
@@ -7,7 +7,12 @@ import { ControlValueAccessor, NgModel } from '@angular/common';
     <div class="ui {{ type }} {{ size }} rating">
       <i class="icon" *ngFor="let item of ratings" [ngClass]="{'active': item <= rating }" (click)="setRating(item)"></i>
     </div>
-  `
+  `,
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => RatingComponent),
+    multi: true
+  }]
 })
 
 export class RatingComponent implements ControlValueAccessor {

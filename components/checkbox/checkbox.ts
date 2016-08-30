@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ControlValueAccessor, NgModel } from '@angular/common';
+import { Component, Input, Output, EventEmitter, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NgModel, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: "lsu-checkbox",
@@ -8,7 +8,12 @@ import { ControlValueAccessor, NgModel } from '@angular/common';
       <input type="checkbox" [attr.checked]="checked? 'checked':null" [attr.disabled]="disabled ? 'disabled' : null" (click)="toggleCheck($event)">
       <label>{{ label }}</label>
     </div>
-  `
+  `,
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => CheckBoxComponent),
+    multi: true
+  }]
 })
 
 export class CheckBoxComponent implements ControlValueAccessor {

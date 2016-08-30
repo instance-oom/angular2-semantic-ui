@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { ControlValueAccessor, NgModel } from '@angular/common';
+import { Component, Input, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'lsu-dropdown',
@@ -30,7 +30,12 @@ import { ControlValueAccessor, NgModel } from '@angular/common';
         </div>
       </div>
     </div>
-  `
+  `,
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => DropdownComponent),
+    multi: true
+  }]
 })
 
 export class DropdownComponent implements ControlValueAccessor {
