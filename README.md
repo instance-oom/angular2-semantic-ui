@@ -12,7 +12,7 @@ Angular2 Components for <a href="http://semantic-ui.com/">Semantic UI</a>
 ```
 npm install angular2-semantic-ui --save
 
-import { SEMANTIC_UI_COMPONENTS } from 'angular2-semantic-ui/angular2-semantic-ui';
+import { SEMANTIC_UI_COMPONENTS } from 'angular2-semantic-ui';
 ```
 
 #Demo 
@@ -40,6 +40,7 @@ npm start
 - <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/accordion">Accordion</a>
 - <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/popup">Popup</a>
 - <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/pagination">Pagination</a>
+- <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/tags-input">Tags-Input</a>
 
 #Change Log
 
@@ -49,3 +50,4 @@ npm start
 - 2016-06-11 Fix tabset component's bug
 - 2016-06-12 Improve tabset and add onChange event for checkbox, fix some bug
 - 2016-07-24 Upgrade angular2 to `rc4` and remove unused dependencies
+- 2016-08-30 Add component of `lsu-tagsInput`
