@@ -1,11 +1,11 @@
 import { Component, Input, Output, EventEmitter, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NgModel, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: "lsu-checkbox",
   template: `
     <div class="ui {{type}} checkbox" [ngClass]="{'checked': checked}">
-      <input type="checkbox" [attr.checked]="checked? 'checked':null" [attr.disabled]="disabled ? 'disabled' : null" (click)="toggleCheck($event)">
+      <input type="checkbox" [attr.checked]="checked? 'checked' : null" [attr.disabled]="disabled ? 'disabled' : null" (click)="toggleCheck($event)">
       <label>{{ label }}</label>
     </div>
   `,
@@ -17,8 +17,6 @@ import { ControlValueAccessor, NgModel, NG_VALUE_ACCESSOR } from '@angular/forms
 })
 
 export class CheckBoxComponent implements ControlValueAccessor {
-  @Input()
-  public checked: boolean = false;
 
   @Input()
   public disabled: boolean = false;
@@ -30,26 +28,26 @@ export class CheckBoxComponent implements ControlValueAccessor {
   public label: string;
 
   @Output()
-  private onChange: EventEmitter<any>;
+  onChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  private _onChange: Function;
-  private _onTouched: Function;
-  private vm: NgModel
-  constructor(vm: NgModel) {
-    this.vm = vm;
-    vm.valueAccessor = this;
-    this.onChange = new EventEmitter();
+  private checked: boolean = false;
+  private _onChange = (_: any) => { };
+  private _onTouched = () => { };
+
+  constructor() {
   }
 
-  public writeValue(value: boolean): void {
+  writeValue(value: boolean): void {
     this.checked = value;
+    this._onChange(value);
+    this.onChange.next(value);
   }
 
-  public registerOnChange(fn: (_: any) => {}): void {
+  registerOnChange(fn: (_: any) => {}): void {
     this._onChange = fn;
   }
 
-  public registerOnTouched(fn: () => {}): void {
+  registerOnTouched(fn: () => {}): void {
     this._onTouched = fn;
   }
 
@@ -59,7 +57,5 @@ export class CheckBoxComponent implements ControlValueAccessor {
     }
     var value: boolean = !this.checked
     this.writeValue(value);
-    this.vm.viewToModelUpdate(value);
-    this.onChange.next(event);
   }
 }

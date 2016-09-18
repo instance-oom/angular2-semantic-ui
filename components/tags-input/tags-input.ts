@@ -36,7 +36,7 @@ import { ControlValueAccessor, NgModel, NG_VALUE_ACCESSOR, Validators, Validator
       }
     `
   ],
-  template:  `
+  template: `
     <div class="ui fluid dropdown selection multiple tags-input" [class.invalid]="tagInputCtrl.invalid && submitted" tabindex="-1" (click)="tagsInput.focus()" (keyup)="topKeyup($event)">
       <a class="ui label transition visible" [class.deleteTarget]="delTarget == tag" *ngFor="let tag of tags; let i = index; let last = last;"
         (click)="setDeltarget(tag, $event)">
@@ -75,16 +75,8 @@ export class TagsInputComponent implements ControlValueAccessor {
   private tagInputCtrl: FormControl;
   private submitted: boolean = false;
 
-  private onChange: Function;
-  private onTouched: Function;
-
-  get value(): Array<any> {
-    return this.tags;
-  }
-
-  set value(v: Array<any>) {
-    this.tags = v || [];
-  }
+  private _onChange = (_: any) => { };
+  private _onTouched = () => { };
 
   constructor(private element: ElementRef) {
 
@@ -100,14 +92,15 @@ export class TagsInputComponent implements ControlValueAccessor {
 
   writeValue(value: any): void {
     this.tags = value || [];
+    this._onChange(value);
   }
 
   registerOnChange(fn: (_: any) => {}): void {
-    this.onChange = fn;
+    this._onChange = fn;
   }
 
   registerOnTouched(fn: () => {}): void {
-    this.onTouched = fn;
+    this._onTouched = fn;
   }
 
   private topKeyup(event: any) {
@@ -130,7 +123,7 @@ export class TagsInputComponent implements ControlValueAccessor {
     event.stopPropagation();
   }
 
-  private tagInputOnFocus(event: any) {    
+  private tagInputOnFocus(event: any) {
     this.submitted = !!event.srcElement.value;
     this.delTarget = '';
   }
@@ -138,7 +131,7 @@ export class TagsInputComponent implements ControlValueAccessor {
   private tagInputKeyPress(event: any) {
     let value = event.srcElement.value;
     if (event.keyCode === 13 && value) {
-      this.submitted = true;            
+      this.submitted = true;
       if (this.tagInputCtrl.valid) {
         this.tags.push(value);
         event.srcElement.value = '';
@@ -161,7 +154,6 @@ export class TagsInputComponent implements ControlValueAccessor {
     let value = event.srcElement.value;
     if (event.keyCode === 8 && !value && this.tags.length > 0 && this.isBackspaceDown) {
       this.delTarget = this.tags[this.tags.length - 1];
-      console.log(this.delTarget)
       event.stopPropagation();
       this.rootEle.focus();
     }

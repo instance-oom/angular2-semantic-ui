@@ -1,8 +1,8 @@
 import { Component, Input, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgModel } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
-  selector: 'lsu-rating[ngModel]',
+  selector: 'lsu-rating',
   template: `
     <div class="ui {{ type }} {{ size }} rating">
       <i class="icon" *ngFor="let item of ratings" [ngClass]="{'active': item <= rating }" (click)="setRating(item)"></i>
@@ -40,25 +40,23 @@ export class RatingComponent implements ControlValueAccessor {
 
   private ratings: Array<number>;
 
-  private onChange: Function;
-  private onTouched: Function;
-  private vm: NgModel
+  private _onChange = (_: any) => { };
+  private _onTouched = () => { };
 
-  constructor(vm: NgModel) {
-    this.vm = vm;
-    vm.valueAccessor = this;
+  constructor() {
   }
 
   public writeValue(value: any): void {
     this.rating = value;
+    this._onChange(value);
   }
 
   public registerOnChange(fn: (_: any) => {}): void {
-    this.onChange = fn;
+    this._onChange = fn;
   }
 
   public registerOnTouched(fn: () => {}): void {
-    this.onTouched = fn;
+    this._onTouched = fn;
   }
 
   public ngOnInit(): void {
@@ -68,7 +66,7 @@ export class RatingComponent implements ControlValueAccessor {
   }
 
   private getRatings(size: number): Array<number> {
-    let ratings:Array<number> = [];
+    let ratings: Array<number> = [];
     for (let i = 0; i < size; i++) {
       ratings.push(i + 1);
     }
@@ -77,6 +75,5 @@ export class RatingComponent implements ControlValueAccessor {
 
   private setRating(item: number): void {
     this.writeValue(item);
-    this.vm.viewToModelUpdate(item);
   }
 }

@@ -130,17 +130,18 @@ export class PaginationComponent {
 
   private getPages(currentPage: number, totalPage: number): Array<number> {
     let pages: Array<number> = [];
+    let maxSize = this.maxSize;
     if (currentPage > totalPage) {
       currentPage = totalPage;
     }
-    if (this.maxSize > totalPage) {
-      this.maxSize = totalPage;
+    if (maxSize > totalPage) {
+      maxSize = totalPage;
     }
-    let beginPage = Math.max(currentPage - Math.floor(this.maxSize / 2), 1);
-    let endPage = beginPage + this.maxSize - 1;
+    let beginPage = Math.max(currentPage - Math.floor(maxSize / 2), 1);
+    let endPage = beginPage + maxSize - 1;
     if (endPage > totalPage) {
       endPage = totalPage;
-      beginPage = endPage - this.maxSize + 1;
+      beginPage = endPage - maxSize + 1;
     }
     for (let i = beginPage; i <= endPage; i++) {
       pages.push(i);

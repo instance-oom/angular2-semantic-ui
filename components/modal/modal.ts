@@ -1,5 +1,5 @@
 import { Component, Input, Output, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgModel } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'lsu-modal',
@@ -37,18 +37,16 @@ export class ModalComponent implements ControlValueAccessor {
   private _showModal: boolean;
   private element: any;
   private id: string;
-  private onChange: Function;
-  private onTouched: Function;
-  private vm: NgModel
+  private _onChange = (_: any) => { };
+  private _onTouched = () => { };
 
-  constructor(vm: NgModel) {
-    this.vm = vm;
-    vm.valueAccessor = this;
+  constructor() {
     this.id = `lsu_modal_${Math.random()}`
   }
 
   public writeValue(value: boolean): void {
     this._showModal = value;
+    this._onChange(value);
     if (value) {
       document.body.classList.add("dimmed");
       var self = this;
@@ -64,11 +62,11 @@ export class ModalComponent implements ControlValueAccessor {
   }
 
   public registerOnChange(fn: (_: any) => {}): void {
-    this.onChange = fn;
+    this._onChange = fn;
   }
 
   public registerOnTouched(fn: () => {}): void {
-    this.onTouched = fn;
+    this._onTouched = fn;
   }
 
   public ngAfterViewInit(): void {
@@ -86,6 +84,5 @@ export class ModalComponent implements ControlValueAccessor {
     }
     let val = false;
     this.writeValue(val);
-    this.vm.viewToModelUpdate(val);
   }
 }

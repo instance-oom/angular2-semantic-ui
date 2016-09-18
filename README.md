@@ -51,3 +51,4 @@ npm start
 - 2016-06-12 Improve tabset and add onChange event for checkbox, fix some bug
 - 2016-07-24 Upgrade angular2 to `rc4` and remove unused dependencies
 - 2016-08-30 Add component of `lsu-tagsInput`
+- 2016-09-18 Upgrade angular2 to `final`, Optimization code

@@ -1,5 +1,5 @@
 import { Component, Input, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, NgModel } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'lsu-dropdown',
@@ -56,39 +56,36 @@ export class DropdownComponent implements ControlValueAccessor {
 
   private id: string;
 
-  private onChange: Function;
-  private onTouched: Function;
-  private vm: NgModel
+  private _onChange = (_: any) => { };
+  private _onTouched = () => { };
 
-  constructor(vm: NgModel) {
-    this.vm = vm;
-    vm.valueAccessor = this;
+  constructor() {
     this.id = `lsu_dropdown_${Math.random()}`;
   }
 
-  public writeValue(value: any): void {
+  writeValue(value: any): void {
     this.selectedItem = value;
+    this._onChange(value);
   }
 
-  public registerOnChange(fn: (_: any) => {}): void {
-    this.onChange = fn;
+  registerOnChange(fn: (_: any) => {}): void {
+    this._onChange = fn;
   }
 
-  public registerOnTouched(fn: () => {}): void {
-    this.onTouched = fn;
+  registerOnTouched(fn: () => {}): void {
+    this._onTouched = fn;
   }
 
-  public ngOnInit(): void {
-    if (this.multiple) {
-      this.selectedItem = this.selectedItem || [];
-      for (let i = 0; i < this.selectedItem.length; i++) {
-        let initItem = this.selectedItem[i];
-        for (let j = 0; j < this.data.length; j++) {
-          let candidateItem = this.data[j];
-          if (JSON.stringify(initItem) === JSON.stringify(candidateItem)) {
-            this.selectedItem[i] = this.data[j];
-            break;
-          }
+  ngOnInit(): void {
+    if (!this.multiple) return;
+    this.selectedItem = this.selectedItem || [];
+    for (let i = 0; i < this.selectedItem.length; i++) {
+      let initItem = this.selectedItem[i];
+      for (let j = 0; j < this.data.length; j++) {
+        let candidateItem = this.data[j];
+        if (JSON.stringify(initItem) === JSON.stringify(candidateItem)) {
+          this.selectedItem[i] = this.data[j];
+          break;
         }
       }
     }
@@ -101,11 +98,8 @@ export class DropdownComponent implements ControlValueAccessor {
     }
   }
 
-  toggleSelectPanel(event?: any): void {
+  private toggleSelectPanel(event?: any): void {
     this.active = !this.active;
-    if (event) {
-      // event.stopPropagation();
-    }
   }
 
   private isSelected(item: any): boolean {
@@ -134,7 +128,6 @@ export class DropdownComponent implements ControlValueAccessor {
       this.toggleSelectPanel();
     }
     this.writeValue(value);
-    this.vm.viewToModelUpdate(value);
     event.stopPropagation();
   }
 
@@ -145,7 +138,6 @@ export class DropdownComponent implements ControlValueAccessor {
       value.splice(index, 1);
     }
     this.writeValue(value);
-    this.vm.viewToModelUpdate(value);
     event.stopPropagation();
   }
 }
