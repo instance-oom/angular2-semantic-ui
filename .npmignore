@@ -1,4 +1,8 @@
+.vscode/
 node_modules/
-demo/
+typings/
 components/**/**.js
 angular2-semantic-ui.js
+index.js
+tsconfig.json
+typings.json
