@@ -31,7 +31,8 @@ import { ControlValueAccessor, NgModel, NG_VALUE_ACCESSOR, Validators, Validator
 
       .deleteTarget:hover,
       .deleteTarget {
-          background-color: #FBBD08 !important;
+          border: 0 solid tomato;
+          background-color: tomato !important;
           color: white !important;
       }
     `
@@ -67,7 +68,7 @@ export class TagsInputComponent implements ControlValueAccessor {
   @Input()
   validators: Array<ValidatorFn>;
 
-  private tags: Array<string>;
+  private tags: Array<string> = [];
   private delTarget: string;
   private rootEle: HTMLDivElement;
   private isBackspaceDown: boolean = false;
@@ -92,7 +93,7 @@ export class TagsInputComponent implements ControlValueAccessor {
 
   writeValue(value: any): void {
     this.tags = value || [];
-    this._onChange(value);
+    this._onChange(this.tags);
   }
 
   registerOnChange(fn: (_: any) => {}): void {
