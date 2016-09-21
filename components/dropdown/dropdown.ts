@@ -1,9 +1,9 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, Input, forwardRef, trigger, state, style, transition, animate } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'lsu-dropdown',
-  styles: [`.active{ display:block !important; }`],
+  styles: [`.active,.visible{ display:block !important; }`],
   host: {
     '(document:click)': 'onDocumentClick($event)'
   },
@@ -15,22 +15,37 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
       <div class="default text" *ngIf="!selectedItem || selectedItem.length == 0">
         {{ placeHolder }}
       </div>
-      <div class="text" *ngIf=" selectedItem && !multiple ">
+      <div class="text" *ngIf="selectedItem && !multiple">
         {{ selectedItem[textField] || selectedItem }}
       </div>
-      <div *ngIf="selectedItem && multiple"  [attr.id]="id+'_1'">
+      <div *ngIf="selectedItem && multiple">
         <a class="ui label transition visible" style="display: inline-block !important;" *ngFor="let item of selectedItem">
           {{ item[textField] || item }}
           <i class="delete icon" (click)="removeItem(item, $event)"></i>
         </a>
       </div>
-      <div class="menu transition hidden" [class.hidden]="!active" [class.visible]="active">
+      <div class="menu visible" #menuPanel [@menuPanelState]="menuPanelState"
+        (@menuPanelState.start)="menuPanel.style.overflowY = 'hidden'"
+        (@menuPanelState.done)="menuPanel.style.overflowY = 'auto'">
         <div class="item" [class.active]="isSelected(item)" [class.filtered]="isSelected(item) && multiple" (click)="itemClick(item, $event)" *ngFor="let item of data">
           {{ item[textField] || item }}
         </div>
       </div>
     </div>
   `,
+  animations: [
+    trigger('menuPanelState', [
+      state('inactive', style({
+        height: 0,
+        opacity: 0
+      })),
+      state('active', style({
+        height: '*',
+        opacity: 1
+      })),
+      transition('inactive <=> active', animate('200ms ease'))
+    ])
+  ],
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => DropdownComponent),
@@ -51,11 +66,25 @@ export class DropdownComponent implements ControlValueAccessor {
   @Input()
   public multiple: boolean = false;
 
+  private get active(): boolean {
+    return this._active;
+  }
+  private set active(v: boolean) {
+    this._active = !!v;
+    if (this._active) {
+      this.menuPanelState = 'active';
+    } else {
+      this.menuPanelState = 'inactive';
+    }
+  }
+
+
   private selectedItem: any;
-  private active: boolean = false;
+  private menuPanelState: string = 'inactive';
 
   private id: string;
 
+  private _active: boolean = false;
   private _onChange = (_: any) => { };
   private _onTouched = () => { };
 
@@ -93,13 +122,16 @@ export class DropdownComponent implements ControlValueAccessor {
 
   private onDocumentClick(event: any): void {
     let id: string = event.target.id;
-    if (this.active && id !== this.id && id !== `${this.id}_1`) {
+    if (this.active && id !== this.id) {
       this.active = false;
     }
   }
 
   private toggleSelectPanel(event?: any): void {
     this.active = !this.active;
+    if (event) {
+      event.target.id = this.id;
+    }
   }
 
   private isSelected(item: any): boolean {
