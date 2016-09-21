@@ -4,3 +4,4 @@ components/*.js
 components/*/*.js
 angular2-semantic-ui.js
 .vscode/
+typings/
