@@ -16,7 +16,7 @@ import { SEMANTIC_UI_COMPONENTS } from 'angular2-semantic-ui';
 ```
 
 #Demo 
-<a href="https://lon-yang.github.io/angular2-semantic-ui-demo">Online Demo</a><br>
+<a href="https://lon-yang.github.io/angular2-semantic-ui-demo">Online Demo</a>&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://github.com/lon-yang/angular2-semantic-ui-demo">Demo Code</a>
 ```cmd
 git clone https://github.com/lon-yang/angular2-semantic-ui-demo.git
@@ -52,3 +52,4 @@ npm start
 - 2016-07-24 Upgrade angular2 to `rc4` and remove unused dependencies
 - 2016-08-30 Add component of `lsu-tagsInput`
 - 2016-09-18 Upgrade angular2 to `final`, Optimization code
+- 2016-10-19 Upgrade angular2 to `2.1.0`, Optimization code and add animation

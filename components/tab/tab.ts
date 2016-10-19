@@ -2,7 +2,7 @@ import { Component, Input, AfterContentInit } from '@angular/core';
 
 @Component({
   selector: "lsu-tab",
-  styles:[
+  styles: [
     `.ui.bottom.attached.tab.segment.active {
       border-top: none;
     }`
@@ -20,6 +20,9 @@ export class TabComponent implements AfterContentInit {
 
   @Input()
   public active: boolean = false;
+
+  @Input()
+  public useSegment: boolean = false;
 
   public type: string;
   constructor() {

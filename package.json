@@ -1,6 +1,6 @@
 {
   "name": "angular2-semantic-ui",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Angular2 Directives for Semantic UI",
   "main": "index.js",
   "scripts": {
@@ -23,12 +23,12 @@
     "url": "https://github.com/lon-yang/angular2-semantic-ui/issues"
   },
   "homepage": "https://github.com/lon-yang/angular2-semantic-ui#readme",
-  "dependencies": {
-    "@angular/core": "^2.0.0",
-    "@angular/forms": "^2.0.0"
+  "peerDependencies": {
+    "@angular/core": "^2.1.0",
+    "@angular/forms": "^2.1.0"
   },
   "devDependencies": {
-    "typescript": "^1.8.10",
-    "typings": "^1.3.3"
+    "@angular/core": "^2.1.0",
+    "@angular/forms": "^2.1.0"
   }
 }
