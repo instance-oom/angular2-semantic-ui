@@ -12,19 +12,16 @@ Angular2 Components for <a href="http://semantic-ui.com/">Semantic UI</a>
 ```
 npm install angular2-semantic-ui --save
 
-import { SEMANTIC_UI_COMPONENTS } from 'angular2-semantic-ui';
+import { L_SEMANTIC_UI_MODULE } from 'angular2-semantic-ui';
 ```
 
-#Demo 
-<a href="https://lon-yang.github.io/angular2-semantic-ui-demo">Online Demo</a>&nbsp;&nbsp;&nbsp;&nbsp;
+# Demo 
+<a href="https://lon-yang.github.io/angular2-semantic-ui-demo">Online Demo</a>    
 <a href="https://github.com/lon-yang/angular2-semantic-ui-demo">Demo Code</a>
 ```cmd
 git clone https://github.com/lon-yang/angular2-semantic-ui-demo.git
-
 cd angular2-semantic-ui-demo
-
 npm install
-
 npm start
 ```
 
@@ -42,7 +39,10 @@ npm start
 - <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/pagination">Pagination</a>
 - <a href="https://github.com/lon-yang/angular2-semantic-ui/tree/master/components/tags-input">Tags-Input</a>
 
-#Change Log
+# Using with Systemjs
+Please see [systemjs.config.js](https://github.com/lon-yang/angular2-semantic-ui/blob/master/systemjs.config.js)
+
+# Change Log
 
 - 2016-06-02 Add Pagination Component
 - 2016-06-03 Fix bug
@@ -53,3 +53,4 @@ npm start
 - 2016-08-30 Add component of `lsu-tagsInput`
 - 2016-09-18 Upgrade angular2 to `final`, Optimization code
 - 2016-10-19 Upgrade angular2 to `2.1.0`, Optimization code and add animation
+- 2016-11-13 Support NgModule, fix #5

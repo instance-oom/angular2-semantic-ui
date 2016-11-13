@@ -1,3 +1,7 @@
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 import { CHECKBOX_DIRECTIVES } from './components/checkbox';
 import { DIMMER_DIRECTIVES } from './components/dimmer';
 import { DROPDOWN_DIRECTIVES } from './components/dropdown';
@@ -25,7 +29,7 @@ export * from './components/pagination';
 export * from './components/tags-input';
 
 export const SEMANTIC_UI_COMPONENTS: Array<any> = [
-  ...ACCORDION_DIRECTIVES,  
+  ...ACCORDION_DIRECTIVES,
   ...CHECKBOX_DIRECTIVES,
   ...DIMMER_DIRECTIVES,
   ...DROPDOWN_DIRECTIVES,
@@ -38,3 +42,18 @@ export const SEMANTIC_UI_COMPONENTS: Array<any> = [
   ...PAGINATION_DIRECTIVES,
   ...TAGS_INPUT_DIRECTIVES
 ]
+
+@NgModule({
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule
+  ],
+  declarations: [
+    ...SEMANTIC_UI_COMPONENTS
+  ],
+  exports: [
+    ...SEMANTIC_UI_COMPONENTS
+  ]
+})
+export class L_SEMANTIC_UI_MODULE { }

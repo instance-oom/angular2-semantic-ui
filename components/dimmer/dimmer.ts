@@ -1,9 +1,9 @@
-import { Component, Input, ElementRef } from '@angular/core'
+import { Component, Input, ElementRef, ViewChild } from '@angular/core'
 
 @Component({
   selector: 'lsu-dimmer',
   template: `
-    <div class="ui dimmer" [ngClass]="dimmerCls">
+    <div #dimmerDiv class="ui dimmer" [ngClass]="{'active': active}">
       <div class="content">
         <div class="center">
           <ng-content></ng-content>
@@ -14,27 +14,38 @@ import { Component, Input, ElementRef } from '@angular/core'
 })
 
 export class DimmerComponent {
-  private dimmerCls: any
+  @ViewChild("dimmerDiv") dimmerDiv: ElementRef;
+
   private parentEle: any
+  private _active: boolean;
 
   @Input()
   public set active(val: boolean) {
-    if (this.parentEle) {
-      if (val) {
-        this.parentEle.classList.add("dimmable");
-        this.parentEle.classList.add("dimmed");
-      } else {
-        this.parentEle.classList.remove("dimmable");
-        this.parentEle.classList.remove("dimmed");
-      }
-      this.dimmerCls.active = val;
-    }
+    this._active = val;
+    this.toggleDimmer()
+  }
+  public get active(): boolean {
+    return this._active;
   }
 
-  constructor(el: ElementRef) {
-    this.parentEle = el.nativeElement.parentElement;
-    this.dimmerCls = {
-      active: this.active
+  constructor() {
+  }
+
+  ngAfterViewInit() {
+    if (!this.parentEle) {
+      this.parentEle = this.dimmerDiv.nativeElement.parentElement.parentElement;
+    }
+    this.toggleDimmer();
+  }
+
+  toggleDimmer() {
+    if (!this.parentEle) return;
+    if (this.active) {
+      this.parentEle.classList.add("dimmable");
+      this.parentEle.classList.add("dimmed");
+    } else {
+      this.parentEle.classList.remove("dimmable");
+      this.parentEle.classList.remove("dimmed");
     }
   }
 }

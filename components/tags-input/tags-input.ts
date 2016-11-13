@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, forwardRef } from '@angular/core';
+import { Component, Input, ElementRef, forwardRef, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NgModel, NG_VALUE_ACCESSOR, Validators, ValidatorFn, FormControl } from '@angular/forms';
 
 @Component({
@@ -38,7 +38,7 @@ import { ControlValueAccessor, NgModel, NG_VALUE_ACCESSOR, Validators, Validator
     `
   ],
   template: `
-    <div class="ui fluid dropdown selection multiple tags-input" [class.invalid]="tagInputCtrl.invalid && submitted" tabindex="-1" (click)="tagsInput.focus()" (keyup)="topKeyup($event)">
+    <div #rootEleRef class="ui fluid dropdown selection multiple tags-input" [class.invalid]="tagInputCtrl.invalid && submitted" tabindex="-1" (click)="tagsInput.focus()" (keyup)="topKeyup($event)">
       <a class="ui label transition visible" [class.deleteTarget]="delTarget == tag" *ngFor="let tag of tags; let i = index; let last = last;"
         (click)="setDeltarget(tag, $event)">
         {{ tag }}
@@ -58,6 +58,8 @@ import { ControlValueAccessor, NgModel, NG_VALUE_ACCESSOR, Validators, Validator
   }]
 })
 export class TagsInputComponent implements ControlValueAccessor {
+
+  @ViewChild('rootEleRef') rootEleRef: ElementRef;
 
   @Input()
   placeholder: string = 'Add Tag';
@@ -79,7 +81,7 @@ export class TagsInputComponent implements ControlValueAccessor {
   private _onChange = (_: any) => { };
   private _onTouched = () => { };
 
-  constructor(private element: ElementRef) {
+  constructor() {
 
   }
 
@@ -88,7 +90,9 @@ export class TagsInputComponent implements ControlValueAccessor {
   }
 
   ngAfterViewInit() {
-    this.rootEle = this.element.nativeElement.children[0];
+    if (!this.rootEle) {
+      this.rootEle = this.rootEleRef.nativeElement;
+    }
   }
 
   writeValue(value: any): void {

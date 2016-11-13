@@ -1,8 +1,6 @@
 .vscode/
 node_modules/
 typings/
-components/**/**.js
-angular2-semantic-ui.js
-index.js
 tsconfig.json
 typings.json
+systemjs.config.js
