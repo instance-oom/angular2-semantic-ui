@@ -1,8 +1,5 @@
 node_modules/
-demo/app/*.js
-components/*.js
-components/*/*.js
-angular2-semantic-ui.js
-index.js
 .vscode/
 typings/
+*.js
+*.d.ts

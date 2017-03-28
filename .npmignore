@@ -4,3 +4,5 @@ typings/
 tsconfig.json
 typings.json
 systemjs.config.js
+*.ts
+!*.d.ts
