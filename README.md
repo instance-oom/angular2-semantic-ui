@@ -1,8 +1,9 @@
-# angular2-semantic-ui[![Analytics](https://ga-beacon.appspot.com/UA-80126017-1/welcome-page)](https://github.com/lon-yang/angular2-semantic-ui)
-[![Dependency Status](https://david-dm.org/lon-yang/angular2-semantic-ui.svg)](https://david-dm.org/lon-yang/angular2-semantic-ui)
+# angular2-semantic-ui
+[![peerDependencies Status](https://david-dm.org/lon-yang/angular2-semantic-ui/peer-status.svg)](https://david-dm.org/lon-yang/angular2-semantic-ui?type=peer)
 [![npm version](https://badge.fury.io/js/angular2-semantic-ui.svg)](https://www.npmjs.com/package/angular2-semantic-ui)
 [![npm downloads](https://img.shields.io/npm/dt/angular2-semantic-ui.svg)](https://www.npmjs.com/package/angular2-semantic-ui)
 [![licence](https://img.shields.io/npm/l/angular2-semantic-ui.svg)](https://opensource.org/licenses/MIT)
+[![Analytics](https://ga-beacon.appspot.com/UA-80126017-1/welcome-page)](https://github.com/lon-yang/angular2-semantic-ui)
 
 Angular2 Components for <a href="http://semantic-ui.com/">Semantic UI</a>
 <br>
@@ -11,13 +12,11 @@ Angular2 Components for <a href="http://semantic-ui.com/">Semantic UI</a>
 # Install
 ```
 npm install angular2-semantic-ui --save
-
 import { L_SEMANTIC_UI_MODULE } from 'angular2-semantic-ui';
 ```
 
 # Demo 
-<a href="https://lon-yang.github.io/angular2-semantic-ui-demo">Online Demo</a>    
-<a href="https://github.com/lon-yang/angular2-semantic-ui-demo">Demo Code</a>
+[Online](https://lon-yang.github.io/angular2-semantic-ui-demo) - [Source Code](https://github.com/lon-yang/angular2-semantic-ui-demo)
 ```cmd
 git clone https://github.com/lon-yang/angular2-semantic-ui-demo.git
 cd angular2-semantic-ui-demo
@@ -54,3 +53,4 @@ Please see [systemjs.config.js](https://github.com/lon-yang/angular2-semantic-ui
 - 2016-09-18 Upgrade angular2 to `final`, Optimization code
 - 2016-10-19 Upgrade angular2 to `2.1.0`, Optimization code and add animation
 - 2016-11-13 Support NgModule, fix #5
+- 2017-03-28 Support Angular 4.0.0 (version 1.4.0 will need angular 4.0.0 and later)

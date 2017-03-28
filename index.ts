@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CHECKBOX_DIRECTIVES } from './components/checkbox';
 import { DIMMER_DIRECTIVES } from './components/dimmer';
@@ -47,7 +48,8 @@ export const SEMANTIC_UI_COMPONENTS: Array<any> = [
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     ...SEMANTIC_UI_COMPONENTS

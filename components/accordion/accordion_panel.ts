@@ -1,4 +1,5 @@
-import { Component, Input, EventEmitter, trigger, state, style, transition, animate } from '@angular/core';
+import { Component, Input, EventEmitter } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'lsu-accordionPanel',

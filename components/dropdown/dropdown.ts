@@ -1,4 +1,5 @@
-import { Component, Input, forwardRef, trigger, state, style, transition, animate } from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
@@ -61,7 +62,7 @@ export class DropdownComponent implements ControlValueAccessor {
   public textField: string;
 
   @Input()
-  public placeHolder: string = "";
+  public placeHolder: string = '';
 
   @Input()
   public multiple: boolean = false;

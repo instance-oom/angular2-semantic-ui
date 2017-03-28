@@ -3,9 +3,15 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: "lsu-checkbox",
+  styles: [
+    ` .ui.checkbox > label {
+        cursor: pointer;
+      }
+    `
+  ],
   template: `
-    <div class="ui {{type}} checkbox" [ngClass]="{'checked': checked}">
-      <input type="checkbox" [attr.checked]="checked? 'checked' : null" [attr.disabled]="disabled ? 'disabled' : null" (click)="toggleCheck($event)">
+    <div class="ui {{type}} checkbox" [ngClass]="{'checked': checked}" (click)="toggleCheck($event)">
+      <input type="checkbox" [attr.checked]="checked? 'checked' : null" [attr.disabled]="disabled ? 'disabled' : null">
       <label>{{ label }}</label>
     </div>
   `,
