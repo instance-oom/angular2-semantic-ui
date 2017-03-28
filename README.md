@@ -1,6 +1,6 @@
 # angular2-semantic-ui
 [![peerDependencies Status](https://david-dm.org/lon-yang/angular2-semantic-ui/peer-status.svg)](https://david-dm.org/lon-yang/angular2-semantic-ui?type=peer)
-[![npm version](https://badge.fury.io/js/angular2-semantic-ui.svg)](https://www.npmjs.com/package/angular2-semantic-ui)
+[![npm version](https://badge.fury.io/js/angular2-semantic-ui.svg)](https://badge.fury.io/js/angular2-semantic-ui)
 [![npm downloads](https://img.shields.io/npm/dt/angular2-semantic-ui.svg)](https://www.npmjs.com/package/angular2-semantic-ui)
 [![licence](https://img.shields.io/npm/l/angular2-semantic-ui.svg)](https://opensource.org/licenses/MIT)
 [![Analytics](https://ga-beacon.appspot.com/UA-80126017-1/welcome-page)](https://github.com/lon-yang/angular2-semantic-ui)
