@@ -47,9 +47,9 @@ export class AccordionPanelComponent {
     }
   }
 
-  private _active: boolean = false;
-  private panelState: string = 'inactive';
-  private parent: any;
+  _active: boolean = false;
+  panelState: string = 'inactive';
+  parent: any;
   constructor() {
 
   }

@@ -36,9 +36,9 @@ export class CheckBoxComponent implements ControlValueAccessor {
   @Output()
   onChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  private checked: boolean = false;
-  private _onChange = (_: any) => { };
-  private _onTouched = () => { };
+  checked: boolean = false;
+  _onChange = (_: any) => { };
+  _onTouched = () => { };
 
   constructor() {
   }

@@ -15,23 +15,23 @@ import { TabComponent } from './tab';
 
 export class TabSetComponent implements AfterContentInit {
   @ContentChildren(TabComponent)
-  private tabs: QueryList<TabComponent>;
+  tabs: QueryList<TabComponent>;
 
   @Input()
-  private set type(val: string) {
+  set type(val: string) {
     if (this._type !== val) {
       this.generateClass(val);
     }
     this._type = val;
   };
 
-  private get type(): string {
+  get type(): string {
     return this._type;
   }
 
-  private _tabs: Array<TabComponent> = [];
-  private _type: string = 'tabular';
-  private tabSetCls: string;
+  _tabs: Array<TabComponent> = [];
+  _type: string = 'tabular';
+  tabSetCls: string;
   constructor() {
   }
 
@@ -62,7 +62,7 @@ export class TabSetComponent implements AfterContentInit {
     }
   }
 
-  private generateClass(type: string): void {
+  generateClass(type: string): void {
     if (type === "secondary") {
       this.tabSetCls = "ui secondary menu";
     } else if (type === "pointing") {

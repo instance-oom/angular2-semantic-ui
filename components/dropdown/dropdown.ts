@@ -67,10 +67,10 @@ export class DropdownComponent implements ControlValueAccessor {
   @Input()
   public multiple: boolean = false;
 
-  private get active(): boolean {
+  get active(): boolean {
     return this._active;
   }
-  private set active(v: boolean) {
+  set active(v: boolean) {
     this._active = !!v;
     if (this._active) {
       this.menuPanelState = 'active';
@@ -80,14 +80,14 @@ export class DropdownComponent implements ControlValueAccessor {
   }
 
 
-  private selectedItem: any;
-  private menuPanelState: string = 'inactive';
+  selectedItem: any;
+  menuPanelState: string = 'inactive';
 
-  private id: string;
+  id: string;
 
-  private _active: boolean = false;
-  private _onChange = (_: any) => { };
-  private _onTouched = () => { };
+  _active: boolean = false;
+  _onChange = (_: any) => { };
+  _onTouched = () => { };
 
   constructor() {
     this.id = `lsu_dropdown_${Math.random()}`;
@@ -121,21 +121,21 @@ export class DropdownComponent implements ControlValueAccessor {
     }
   }
 
-  private onDocumentClick(event: any): void {
+  onDocumentClick(event: any): void {
     let id: string = event.target.id;
     if (this.active && id !== this.id) {
       this.active = false;
     }
   }
 
-  private toggleSelectPanel(event?: any): void {
+  toggleSelectPanel(event?: any): void {
     this.active = !this.active;
     if (event) {
       event.target.id = this.id;
     }
   }
 
-  private isSelected(item: any): boolean {
+  isSelected(item: any): boolean {
     if (!this.selectedItem) {
       return false;
     }

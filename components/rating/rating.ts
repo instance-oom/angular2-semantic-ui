@@ -38,10 +38,10 @@ export class RatingComponent implements ControlValueAccessor {
   @Input()
   public size: string = "";
 
-  private ratings: Array<number>;
+  ratings: Array<number>;
 
-  private _onChange = (_: any) => { };
-  private _onTouched = () => { };
+  _onChange = (_: any) => { };
+  _onTouched = () => { };
 
   constructor() {
   }
@@ -65,7 +65,7 @@ export class RatingComponent implements ControlValueAccessor {
     this.ratings = this.getRatings(this.maxRating);
   }
 
-  private getRatings(size: number): Array<number> {
+  getRatings(size: number): Array<number> {
     let ratings: Array<number> = [];
     for (let i = 0; i < size; i++) {
       ratings.push(i + 1);
@@ -73,7 +73,7 @@ export class RatingComponent implements ControlValueAccessor {
     return ratings;
   }
 
-  private setRating(item: number): void {
+  setRating(item: number): void {
     this.writeValue(item);
   }
 }

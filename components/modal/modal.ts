@@ -34,11 +34,11 @@ export class ModalComponent implements ControlValueAccessor {
   @Input()
   public options: any = {};
 
-  private _showModal: boolean;
-  private element: any;
-  private id: string;
-  private _onChange = (_: any) => { };
-  private _onTouched = () => { };
+  _showModal: boolean;
+  element: any;
+  id: string;
+  _onChange = (_: any) => { };
+  _onTouched = () => { };
 
   constructor() {
     this.id = `lsu_modal_${Math.random()}`
@@ -74,11 +74,11 @@ export class ModalComponent implements ControlValueAccessor {
     this.element = document.getElementById(this.id);
   }
 
-  private clickContent(event: any): void {
+  clickContent(event: any): void {
     event.stopPropagation();
   }
 
-  private closeModal(): void {
+  closeModal(): void {
     if (!this.options.closeable) {
       return;
     }

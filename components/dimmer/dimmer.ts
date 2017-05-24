@@ -16,8 +16,8 @@ import { Component, Input, ElementRef, ViewChild } from '@angular/core'
 export class DimmerComponent {
   @ViewChild("dimmerDiv") dimmerDiv: ElementRef;
 
-  private parentEle: any
-  private _active: boolean;
+  parentEle: any
+  _active: boolean;
 
   @Input()
   public set active(val: boolean) {

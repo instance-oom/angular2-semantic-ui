@@ -70,16 +70,16 @@ export class TagsInputComponent implements ControlValueAccessor {
   @Input()
   validators: Array<ValidatorFn>;
 
-  private tags: Array<string> = [];
-  private delTarget: string;
-  private rootEle: HTMLDivElement;
-  private isBackspaceDown: boolean = false;
+  tags: Array<string> = [];
+  delTarget: string;
+  rootEle: HTMLDivElement;
+  isBackspaceDown: boolean = false;
 
-  private tagInputCtrl: FormControl;
-  private submitted: boolean = false;
+  tagInputCtrl: FormControl;
+  submitted: boolean = false;
 
-  private _onChange = (_: any) => { };
-  private _onTouched = () => { };
+  _onChange = (_: any) => { };
+  _onTouched = () => { };
 
   constructor() {
 
@@ -108,7 +108,7 @@ export class TagsInputComponent implements ControlValueAccessor {
     this._onTouched = fn;
   }
 
-  private topKeyup(event: any) {
+  topKeyup(event: any) {
     if (event.keyCode === 8 && this.delTarget) {
       let index = this.tags.indexOf(this.delTarget);
       if (index !== -1) {
@@ -118,22 +118,22 @@ export class TagsInputComponent implements ControlValueAccessor {
     }
   }
 
-  private setDeltarget(tag: string, evnet: any) {
+  setDeltarget(tag: string, evnet: any) {
     this.delTarget = tag;
     event.stopPropagation();
   }
 
-  private remove(index: number, evnet: any) {
+  remove(index: number, evnet: any) {
     this.tags.splice(index, 1);
     event.stopPropagation();
   }
 
-  private tagInputOnFocus(event: any) {
+  tagInputOnFocus(event: any) {
     this.submitted = !!event.srcElement.value;
     this.delTarget = '';
   }
 
-  private tagInputKeyPress(event: any) {
+  tagInputKeyPress(event: any) {
     let value = event.srcElement.value;
     if (event.keyCode === 13 && value) {
       this.submitted = true;
@@ -146,7 +146,7 @@ export class TagsInputComponent implements ControlValueAccessor {
     }
   }
 
-  private tagInputKeyDown(event: any) {
+  tagInputKeyDown(event: any) {
     let value = event.srcElement.value;
     if (event.keyCode === 8 && !value) {
       this.isBackspaceDown = true;
@@ -155,7 +155,7 @@ export class TagsInputComponent implements ControlValueAccessor {
     }
   }
 
-  private tagInputKeyUp(event: any) {
+  tagInputKeyUp(event: any) {
     let value = event.srcElement.value;
     if (event.keyCode === 8 && !value && this.tags.length > 0 && this.isBackspaceDown) {
       this.delTarget = this.tags[this.tags.length - 1];

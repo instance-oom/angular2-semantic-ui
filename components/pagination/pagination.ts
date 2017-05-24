@@ -41,34 +41,34 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 export class PaginationComponent {
   @Input()
-  private set maxSize(value: number) {
+  set maxSize(value: number) {
     this._maxSize = value || 10;
     this.updateTotalPages();
   }
-  private get maxSize(): number {
+  get maxSize(): number {
     return this._maxSize;
   }
 
   @Input()
-  private set pageSize(value: number) {
+  set pageSize(value: number) {
     this._pageSize = value || 10;
     this.updateTotalPages();
   }
-  private get pageSize(): number {
+  get pageSize(): number {
     return this._pageSize;
   }
 
   @Input()
-  private set totalCount(value: number) {
+  set totalCount(value: number) {
     this._totalCount = value || 0;
     this.updateTotalPages();
   }
-  private get totalCount(): number {
+  get totalCount(): number {
     return this._totalCount;
   }
 
   @Input()
-  private set currentPage(value: number) {
+  set currentPage(value: number) {
     value = value || 1;
     const _temp = this._currentPage;
     this._currentPage = value < 1 ? 1 : value > this.totalPages ? this.totalPages : value;
@@ -79,28 +79,28 @@ export class PaginationComponent {
       this.onSelectPage.next(value);
     }
   }
-  private get currentPage(): number {
+  get currentPage(): number {
     return this._currentPage;
   }
 
   @Input()
-  private disabled: boolean = false;
+  disabled: boolean = false;
 
   @Input()
-  private options: any = {};
+  options: any = {};
 
   @Output()
-  private onSelectPage: EventEmitter<any>;
+  onSelectPage: EventEmitter<any>;
 
   protected _maxSize: number;
   protected _pageSize: number;
   protected _totalCount: number;
   protected _currentPage: number;
   protected _inited: boolean = false;
-  private totalPages: number;
-  private pages: Array<number> = [];
-  private showPrevMoreBtn: boolean = false;
-  private showNextMoreBtn: boolean = false;
+  totalPages: number;
+  pages: Array<number> = [];
+  showPrevMoreBtn: boolean = false;
+  showNextMoreBtn: boolean = false;
 
   constructor() {
     this.onSelectPage = new EventEmitter();
@@ -113,7 +113,7 @@ export class PaginationComponent {
     this.updateTotalPages();
   }
 
-  private updateTotalPages(): void {
+  updateTotalPages(): void {
     if (!this._inited) return;
     let pageCount: number;
     if (this.totalCount !== undefined) {
@@ -128,7 +128,7 @@ export class PaginationComponent {
     this.setPage(this.currentPage);
   }
 
-  private getPages(currentPage: number, totalPage: number): Array<number> {
+  getPages(currentPage: number, totalPage: number): Array<number> {
     let pages: Array<number> = [];
     let maxSize = this.maxSize;
     if (currentPage > totalPage) {
@@ -151,7 +151,7 @@ export class PaginationComponent {
     return pages;
   }
 
-  private setPage(pageIndex: number, updateCurrentPage: boolean = true): void {
+  setPage(pageIndex: number, updateCurrentPage: boolean = true): void {
     if (pageIndex < 1) {
       pageIndex = 1;
     }
@@ -164,22 +164,22 @@ export class PaginationComponent {
     this.pages = this.getPages(pageIndex, this.totalPages);
   }
 
-  private pageUp(): void {
+  pageUp(): void {
     let pageIndex = this.currentPage - 1;
     this.setPage(pageIndex);
   }
 
-  private pageDown(): void {
+  pageDown(): void {
     let pageIndex = this.currentPage + 1;
     this.setPage(pageIndex);
   }
 
-  private prevMore(): void {
+  prevMore(): void {
     let pageIndex = this.pages[0] - 1;
     this.setPage(pageIndex, false);
   }
 
-  private nextMore(): void {
+  nextMore(): void {
     let pageIndex = this.pages[this.pages.length - 1] + 1
     this.setPage(pageIndex, false);
   }

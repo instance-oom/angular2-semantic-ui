@@ -12,7 +12,7 @@ import { Component, Input, ElementRef, ViewChild } from '@angular/core'
 export class LoaderComponent {
   @ViewChild("loaderDiv") loaderDiv: ElementRef;
 
-  private _active: boolean;
+  _active: boolean;
   @Input()
   public set active(val: boolean) {
     this._active = val;
@@ -28,7 +28,7 @@ export class LoaderComponent {
   @Input()
   public loaderSize: string
 
-  private parentEle: any
+  parentEle: any
 
   constructor() {
   }

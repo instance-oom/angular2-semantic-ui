@@ -15,9 +15,9 @@ export class AccordionComponent implements AfterContentInit {
   public accordions: QueryList<AccordionPanelComponent>;
 
   @Input()
-  private option: any = {};
+  option: any = {};
 
-  private _accordions: Array<AccordionPanelComponent> = [];
+  _accordions: Array<AccordionPanelComponent> = [];
 
   constructor() {
 

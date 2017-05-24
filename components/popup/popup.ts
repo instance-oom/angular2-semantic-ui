@@ -14,14 +14,14 @@ import { Directive, Input, ElementRef } from '@angular/core';
 
 export class PopupDirective {
   @Input()
-  private content: string = "";
+  content: string = "";
 
   @Input()
-  private trigger: string = "hover";
+  trigger: string = "hover";
 
-  private element: any;
-  private popupEle: any;
-  private timeout: any;
+  element: any;
+  popupEle: any;
+  timeout: any;
 
   constructor(el: ElementRef) {
     this.element = el.nativeElement;
@@ -39,7 +39,7 @@ export class PopupDirective {
     this.setPosition();
   }
 
-  private setPosition(): void {
+  setPosition(): void {
     let top = this.element.offsetTop;
     let left = this.element.offsetLeft;
     let height = this.popupEle.offsetHeight;
@@ -47,18 +47,18 @@ export class PopupDirective {
     this.popupEle.style.left = left + 'px';
   }
 
-  private show(): void {
+  show(): void {
     this.popupEle.classList.remove('hidden');
     this.popupEle.classList.add('visible');
     this.setPosition();
   }
 
-  private hidden(): void {
+  hidden(): void {
     this.popupEle.classList.remove('visible');
     this.popupEle.classList.add('hidden');
   }
 
-  private isActived(): boolean {
+  isActived(): boolean {
     return this.popupEle.classList.contains('visible');
   }
 
