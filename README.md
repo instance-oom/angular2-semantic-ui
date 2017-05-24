@@ -54,3 +54,4 @@ Please see [systemjs.config.js](https://github.com/lon-yang/angular2-semantic-ui
 - 2016-10-19 Upgrade angular2 to `2.1.0`, Optimization code and add animation
 - 2016-11-13 Support NgModule, fix #5
 - 2017-03-28 Support Angular 4.0.0 (version 2.0.0 will need angular 4.0.0 and later)
+- 2017-05-24 Support `AOT`
