@@ -9,30 +9,30 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
     '(document:click)': 'onDocumentClick($event)'
   },
   template: `
-    <div class="ui fluid selection dropdown" [attr.id]="id" 
-      [ngClass]="{'active':active,'visible':active,'multiple':multiple}" 
-      (click)="toggleSelectPanel($event)">
-      <i class="dropdown icon"></i>
-      <div class="default text" *ngIf="!selectedItem || selectedItem.length == 0">
-        {{ placeHolder }}
+      <div class="ui fluid selection dropdown" [attr.id]="id"
+           [ngClass]="{'active':active,'visible':active,'multiple':multiple,'disabled':disabled}"
+           (click)="toggleSelectPanel($event)">
+          <i class="dropdown icon"></i>
+          <div class="default text" *ngIf="!selectedItem || selectedItem.length == 0">
+              {{ placeHolder }}
+          </div>
+          <div class="text" *ngIf="selectedItem && !multiple">
+              {{ selectedItem[textField] || selectedItem }}
+          </div>
+          <div *ngIf="selectedItem && multiple">
+              <a class="ui label transition visible" style="display: inline-block !important;" *ngFor="let item of selectedItem">
+                  {{ item[textField] || item }}
+                  <i class="delete icon" (click)="removeItem(item, $event)"></i>
+              </a>
+          </div>
+          <div class="menu visible" #menuPanel [@menuPanelState]="menuPanelState"
+               (@menuPanelState.start)="menuPanel.style.overflowY = 'hidden'"
+               (@menuPanelState.done)="menuPanel.style.overflowY = 'auto'">
+              <div class="item" [class.active]="isSelected(item)" [class.filtered]="isSelected(item) && multiple" (click)="itemClick(item, $event)" *ngFor="let item of data">
+                  {{ item[textField] || item }}
+              </div>
+          </div>
       </div>
-      <div class="text" *ngIf="selectedItem && !multiple">
-        {{ selectedItem[textField] || selectedItem }}
-      </div>
-      <div *ngIf="selectedItem && multiple">
-        <a class="ui label transition visible" style="display: inline-block !important;" *ngFor="let item of selectedItem">
-          {{ item[textField] || item }}
-          <i class="delete icon" (click)="removeItem(item, $event)"></i>
-        </a>
-      </div>
-      <div class="menu visible" #menuPanel [@menuPanelState]="menuPanelState"
-        (@menuPanelState.start)="menuPanel.style.overflowY = 'hidden'"
-        (@menuPanelState.done)="menuPanel.style.overflowY = 'auto'">
-        <div class="item" [class.active]="isSelected(item)" [class.filtered]="isSelected(item) && multiple" (click)="itemClick(item, $event)" *ngFor="let item of data">
-          {{ item[textField] || item }}
-        </div>
-      </div>
-    </div>
   `,
   animations: [
     trigger('menuPanelState', [
@@ -60,6 +60,9 @@ export class DropdownComponent implements ControlValueAccessor {
 
   @Input()
   public textField: string;
+
+  @Input()
+  public disabled: boolean = false;
 
   @Input()
   public placeHolder: string = '';
