@@ -1,4 +1,4 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, forwardRef } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
@@ -70,6 +70,9 @@ export class DropdownComponent implements ControlValueAccessor {
   @Input()
   public multiple: boolean = false;
 
+  @Output()
+  public change: EventEmitter<any> = new EventEmitter<any>();
+
   get active(): boolean {
     return this._active;
   }
@@ -98,6 +101,7 @@ export class DropdownComponent implements ControlValueAccessor {
 
   writeValue(value: any): void {
     this.selectedItem = value;
+    this.change.emit(value);
     this._onChange(value);
   }
 
