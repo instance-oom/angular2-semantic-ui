@@ -4,7 +4,7 @@
   import { DROPDOWN_DIRECTIVES } from 'angular2-semantic-ui'
 ```
 ```html
-  <lsu-dropdown [(ngModel)]="selectedItem" [data]="data"></lsu-dropdown>
+  <lsu-dropdown [(ngModel)]="selectedItem" [data]="data" (change)="onChange($event)"></lsu-dropdown>
   <lsu-dropdown [(ngModel)]="selectedItem" [data]="data" [textField]="fieldForShow"></lsu-dropdown>
   <lsu-dropdown [(ngModel)]="selectedItem" [data]="data" [textField]="fieldForShow" [placeHolder]="'select items'" [multiple]="'true'"></lsu-dropdown>  
 ```
@@ -14,3 +14,4 @@
 - textField: 可选，指定哪个属性用于在界面上显示出来
 - placeHolder: 可选
 - multiple: 可选，是否允许多选，默认不允许
+- change: 可选，当选择值改变的时候会触发此事件

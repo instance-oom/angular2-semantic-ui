@@ -5,7 +5,7 @@
   import { DROPDOWN_DIRECTIVES } from 'angular2-semantic-ui'
 ```
 ```html
-  <lsu-dropdown [(ngModel)]="selectedItem" [data]="data"></lsu-dropdown>
+  <lsu-dropdown [(ngModel)]="selectedItem" [data]="data" (change)="onChange($event)"></lsu-dropdown>
   <lsu-dropdown [(ngModel)]="selectedItem" [data]="data" [textField]="fieldForShow"></lsu-dropdown>
   <lsu-dropdown [(ngModel)]="selectedItem" [data]="data" [textField]="fieldForShow" [placeHolder]="'select items'" [multiple]="'true'"></lsu-dropdown>  
 ```
@@ -15,3 +15,4 @@
 - textField: Optional，Specify which properties are used to display in the page
 - placeHolder: Optional
 - multiple: Optional，Default is false
+- change: Optional, when data changed whill fire this event
