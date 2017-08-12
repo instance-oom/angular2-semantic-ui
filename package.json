@@ -1,6 +1,6 @@
 {
   "name": "angular2-semantic-ui",
-  "version": "2.0.6",
+  "version": "2.0.8",
   "description": "Angular2 Directives for Semantic UI",
   "main": "index.js",
   "scripts": {
