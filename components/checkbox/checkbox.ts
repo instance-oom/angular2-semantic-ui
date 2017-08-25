@@ -2,17 +2,11 @@ import { Component, Input, Output, EventEmitter, forwardRef } from '@angular/cor
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: "lsu-checkbox",
-  styles: [
-    ` .ui.checkbox > label {
-        cursor: pointer;
-      }
-    `
-  ],
+  selector: 'lsu-checkbox',
   template: `
-    <div class="ui {{type}} checkbox" [ngClass]="{'checked': checked}" (click)="toggleCheck($event)">
-      <input type="checkbox" [attr.checked]="checked? 'checked' : null" [attr.disabled]="disabled ? 'disabled' : null">
-      <label>{{ label }}</label>
+    <div class="ui {{type}} checkbox" [ngClass]="{'checked': checked}">
+      <input type="checkbox" id="{{_id}}" [ngModel]="checked" (ngModelChange)="valueChanged($event)" [disabled]="disabled">
+      <label for="{{_id}}" style="cursor: pointer">{{ label }}</label>
     </div>
   `,
   providers: [{
@@ -40,13 +34,17 @@ export class CheckBoxComponent implements ControlValueAccessor {
   _onChange = (_: any) => { };
   _onTouched = () => { };
 
+  _id: string;
+
   constructor() {
+  }
+
+  ngOnInit() {
+    this._id = `lsu_checkbox_${new Date().valueOf()}_${Math.random() * 10000}`;
   }
 
   writeValue(value: boolean): void {
     this.checked = value;
-    this._onChange(value);
-    this.onChange.next(value);
   }
 
   registerOnChange(fn: (_: any) => {}): void {
@@ -57,11 +55,8 @@ export class CheckBoxComponent implements ControlValueAccessor {
     this._onTouched = fn;
   }
 
-  toggleCheck(event: any): void {
-    if (this.disabled) {
-      return;
-    }
-    var value: boolean = !this.checked
-    this.writeValue(value);
+  valueChanged(value: boolean) {
+    this._onChange(value);
+    this.onChange.emit(value);
   }
 }
